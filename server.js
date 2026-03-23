@@ -6,25 +6,55 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
-const app = express()
+const app = express();
+
+const apiResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/')
+const apiResponseJSON = await apiResponse.json()
 
 // Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
 
 // Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // Stel Liquid in als 'view engine'
-const engine = new Liquid()
-app.engine('liquid', engine.express())
+const engine = new Liquid();
+app.engine('liquid', engine.express());
 
 // Stel de map met Liquid templates in
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
-app.set('views', './views')
+app.set('views', './views');
 
+app.get('/', async function (request, response) {
+  response.render('dashboard.liquid');
+});
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+app.get('/instrumenten', async function (request, response) {
+
+  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
+
+  if (request.query.status) {
+    url = url + '?filter[status][_eq]=' + request.query.status
+  }
+
+  const instrumentsResponse = await fetch(url) 
+  const instrumentsResponseJSON = await instrumentsResponse.json()
+
+  response.render('instrumenten_overzicht.liquid', {
+    instruments: instrumentsResponseJSON.data,
+    path: request.path,
+    status: request.query.status || null
+  });
+});
+
+app.get('/acties', async function (request, response) {
+  response.render('acties_overzicht.liquid');
+});
+
+app.get('/instrumenten/:key', async function (request, response) {
+  response.render('instrument-detail.liquid');
+});
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()

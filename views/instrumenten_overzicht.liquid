@@ -1,0 +1,115 @@
+{%  render 'partials/head.liquid', title: "Instrumenten overzicht" %}
+{% include 'partials/header.liquid', path: path %}
+
+<main class="instrument-overview-main">
+    <h2>Overzicht van de instrumenten</h2>
+    
+    <section class="instrument-nav-panel">
+        {% include 'partials/search_bar.liquid' %}
+        <div class="button-box">
+            <button class="button button-primary button--new">New instrument toevoegen</button>
+            <button class="button button-secondary button--filter">Filters</button>
+        </div> 
+        
+        <fieldset class="view-toggle">
+            <button class="button button-primary button--list">List</button>
+            <button class="button button-secondary button--grid">Grid</button>
+        </fieldset>
+        
+    </section>
+
+    <a href="/instrumenten?status=Beschikbaar">Beschikbaar</a>
+    <a href="/instrumenten?status=Uitgeleend">Uitgeleend</a>
+    <a href="/instrumenten?status=In reparatie">In reparatie</a>
+    <a href="/instrumenten">Alle</a>
+
+    <section class="instrument-table-section">
+        <nav class="instrumenten-nav">
+        {% comment %} dit werkt kwa styling maar type moet nog gemaakt worden dus filteren werkt nog niet {% endcomment %}
+            <ul>
+                <li class="{% if type == nil %}active{% endif %}"><a  href="/instrumenten">Alle</a></li>
+                <li class="{% if type == 'gitaar' %}active{% endif %}"><a href="/instrumenten?type=gitaar">Gitaren</a></li>
+                <li class="{% if type == 'Blaasinstrumenten' %}active{% endif %}"><a href="/instrumenten?type=Blaasinstrumenten">Blaasinstrumenten</a></li>
+                <li class="{% if type == 'Violen' %}active{% endif %}"><a href="/instrumenten?type=Violen">Violen</a></li>
+                <li class="{% if type == 'Versterkers' %}active{% endif %}"><a href="/instrumenten?type=Versterkers">Versterkers</a></li>
+                <li class="{% if type == 'Harpen' %}active{% endif %}"><a href="/instrumenten?type=Harpen">Harpen</a></li>
+                <li class="{% if type == 'Drums' %}active{% endif %}"><a href="/instrumenten?type=Drums">Drums</a></li>
+                <li class="{% if type == 'Overige' %}active{% endif %}"><a href="/instrumenten?type=Overige">Overige</a></li>
+            </ul>
+        </nav>
+
+        <p>{{ instruments | size }} Instrumenten</p>
+
+        <table class="instrument-table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <button>
+                            Naam instrument
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" id="Arrows-Sort--Streamline-Tabler" height="24" width="24">
+                                <path d="m3 9 4 -4 4 4M7 5v14" stroke-width="2"></path>
+                                <path d="m21 15 -4 4 -4 -4m4 4V5" stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </th>
+                    <th scope="col">
+                        <button>
+                            Serienummer
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" id="Arrows-Sort--Streamline-Tabler" height="24" width="24">
+                                <path d="m3 9 4 -4 4 4M7 5v14" stroke-width="2"></path>
+                                <path d="m21 15 -4 4 -4 -4m4 4V5" stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Merk</th>
+                    <th scope="col">Eigendom van</th>
+                    <th scope="col">
+                        <button>
+                            Status
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" id="Arrows-Sort--Streamline-Tabler" height="24" width="24">
+                                <path d="m3 9 4 -4 4 4M7 5v14" stroke-width="2"></path>
+                                <path d="m21 15 -4 4 -4 -4m4 4V5" stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </th> 
+                    <th scope="col">
+                        <button>
+                            Datum
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" id="Arrows-Sort--Streamline-Tabler" height="24" width="24">
+                                <path d="m3 9 4 -4 4 4M7 5v14" stroke-width="2"></path>
+                                <path d="m21 15 -4 4 -4 -4m4 4V5" stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </th> 
+                    <th scope="col">Link</th> 
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for instrument in instruments %}
+                <tr>
+                    <td scope="row">{{ instrument.name }}</td>
+                    <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
+                    <td>{{ instrument.type | default: "Onbekend" }}</td>
+                    <td>{{ instrument.brand | default: "Onbekend" }}</td>
+                    <td>{{ instrument.property | default: "Onbekend" }}</td>
+                    <td>
+                        {% include 'partials/status_label.liquid', status: instrument.status %}
+                    </td>
+                    <td> 
+                        {% if instrument.status == "Uitgeleend" or instrument.status == "In reparatie" %} 
+                            tot:{{ instrument.rented_until }}
+                        {% endif %}
+                    </td>
+                    <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+
+{% render 'partials/foot.liquid' %}

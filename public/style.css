@@ -1,0 +1,411 @@
+/* ------------ Partials -----------------------------------*/
+/*head*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(70, 22, 107, 0.2);
+    img{
+        height: 7rem;
+        padding: 1em;
+    }
+}
+.main-nav{
+    ul{
+        display: flex;
+        justify-content: space-between;
+        li{
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            padding: 1em;
+            a{
+                position: relative;
+                text-decoration: none;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.3rem;
+                    width: 100%;
+                    height: 0.2rem;
+                    background-color: var(--color-primary); 
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 0.3s ease;
+                }
+                &:hover::after{
+                    transform: scaleX(1);
+                }
+                &.active::after {
+                    transform: scaleX(1); /* lijn blijft altijd zichtbaar */
+                }
+            }
+        }
+    }
+}
+/*search-bar*/
+.search-bar {
+  display: flex;
+  
+  input {
+    border: 0.07rem solid var(--color-primary);
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0.75em;
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  button {
+    background-color: var(--color-primary);
+    padding: 0.69em 1.8em 0.69em;
+    border: 0.07rem solid var(--color-primary);
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 1.7rem;
+      height: 1.7rem;
+      background-image: url("/icons/search.svg");
+      color: var(--color-neutral-0);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: absolute;
+      left: 1em;
+      top: 50%;
+      transform: translateY(-50%);
+      filter: brightness(0) invert(1);
+    }
+    &:hover {
+      background-color: var(--color-accent-3);
+      color: var(--color-neutral-900);
+      filter: brightness(0) invert(0);
+    }
+  }
+}
+/*foot*/
+/* ------------ Index pagina-------------------------------*/
+.status-overview{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    .status-box{
+        padding: 1rem;
+        border-radius: 0.375em;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        dt{
+            position: relative;
+            padding-left: 2em;
+            white-space: nowrap;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1.5em;
+                height: 1.5em;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 60%;
+            }
+        }
+        &.status-available {
+            background-color: var(--color-status-available-bg);
+            border: 2px solid var(--color-status-available);
+
+            dt::before {
+                background-color: var(--color-status-available-border);
+                background-image: url('/icons/available.svg');
+            }
+        }
+
+        &.status-repair {
+            background-color: var(--color-status-repair-bg);
+            border: 2px solid var(--color-status-repair);
+
+            dt::before {
+                background-color: var(--color-status-repair-border);
+                background-image: url('/icons/repair.svg');
+            }
+        }
+
+        &.status-borrowed {
+            background-color: var(--color-status-borrowed-bg);
+            border: 2px solid var(--color-status-borrowed);
+
+            dt::before {
+                background-color: var(--color-status-borrowed-border);
+                background-image: url('/icons/borrowed.svg');
+            }
+        }
+
+        &.status-unknown {
+            background-color: var(--color-neutral-100);
+            border: 2px solid var(--color-neutral-900);
+
+            dt::before {
+                background-color: var(--color-neutral-300);
+                background-image: url('/icons/unknown.svg');
+            }
+        }
+    }
+}
+/* ------------ instrument toevoegen popup-----------------*/
+/* ------------ Instrument_overview pagina-----------------*/
+.instrument-overview-main{
+    width: 90vw;
+    margin: auto;
+    h2{
+        color: var(--color-primary);
+    }
+}
+.instrument-nav-panel{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    .search-bar {
+        width: 100%;  
+    }
+    .button-box{
+        margin-right: auto;
+    }
+    .view-toggle {
+        margin-left: auto;
+        border: none;
+    }
+}
+.instrument-table-section{
+    .instrumenten-nav{
+        padding-top: 5em;
+        margin-bottom: 2em;
+        ul{
+            display: flex;
+            position: relative;
+            line-height: 2.5;
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: var(--color-primary);
+                border-radius: 1rem;
+            }
+            li{
+                position: relative;
+            }
+
+            li.active {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    right: 0;
+                    height: 6px;
+                    background-color: var(--color-primary);
+                    border-radius: 1rem;
+                    z-index: 1;
+                }
+            }
+
+            a{
+                text-decoration: none;
+                padding: 0 2em;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+.instrument-table{
+    border-radius: 0.375em;
+    border: 2px solid var(--color-primary); 
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 3px 6px var(--color-primary-border);
+    margin: auto;
+    width: 100%;
+    overflow: hidden;
+    th, td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        vertical-align: middle;
+        border: 0.5px solid var(--color-primary-bg);
+    }
+
+    thead tr {
+        background-color: var(--color-primary-border);
+
+        th {
+            color: var(--color-neutral-900);
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--color-neutral-900);
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                padding: 0;
+                font: inherit;
+                text-align: left;
+
+                svg {
+                    width: 1em;
+                    height: 1em;
+                    stroke: var(--color-neutral-900);
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+
+    tbody tr {
+        &:nth-child(odd) {
+            background-color: var(--color-neutral-0);
+        }
+
+        &:nth-child(even) {
+            background-color: var(--color-primary-bg);
+        }
+    }
+}
+/*responsivenes*/
+.instrument-table {
+    th:nth-child(3),
+    th:nth-child(4),
+    th:nth-child(5),
+    th:nth-child(7),
+    th:nth-child(8),
+    td:nth-child(3),
+    td:nth-child(4),
+    td:nth-child(5),
+    td:nth-child(7),
+    td:nth-child(8){
+        display: none;
+    }
+
+    @media (min-width: 700px) {
+        th:nth-child(3),
+        td:nth-child(3) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 800px) {
+        th:nth-child(4),
+        td:nth-child(4) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 900px) {
+        th:nth-child(5),
+        td:nth-child(5) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        th:nth-child(7),
+        td:nth-child(7),
+        th:nth-child(8),
+        td:nth-child(8)
+        {
+            display: table-cell;
+        }
+    }
+}
+.label{
+    padding: 0.375em;
+    padding-left: 2.4em;
+    padding-right: 0.5em;
+    border-radius: 0.375em;
+    position: relative;
+    align-items: center;
+    display: inline-flex;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        z-index: 999;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+    }
+}
+.status-available {
+    background-color: var(--color-status-available-bg);  
+    border: 2px solid var(--color-status-available); 
+    &:before{
+        background-color: var(--color-status-available-border);
+        background-image: url('/icons/available.svg'); 
+    }     
+}
+.status-repair {
+    background-color: var(--color-status-repair-bg);
+    border: 2px solid var(--color-status-repair);  
+    &:before{
+        background-color: var(--color-status-repair-border);
+        background-image: url('/icons/repair.svg'); 
+    } 
+}
+.status-borrowed {
+    background-color: var(--color-status-borrowed-bg);   
+    border: 2px solid var(--color-status-borrowed); 
+    &:before{
+        background-color: var(--color-status-borrowed-border);
+        background-image: url('/icons/borrowed.svg');
+    } 
+}
+.status-unknown {
+    background-color: var(--color-neutral-100);   
+    border: 2px solid var(--color-neutral-900); 
+    &:before{
+        background-color: var(--color-neutral-300);
+        background-image: url('/icons/unknown.svg');
+    } 
+}
+
+/* ------------ Instrument_detail pagina-------------------*/
+.detail-main{
+    width: 90vw;
+    margin: auto;
+    h2{
+        color: var(--color-primary);
+    }
+}
+
+.detail-hero{
+    figure{
+        width: 1rem;
+        height: 1rem;
+        overflow: hidden;
+    }
+}
+/* ------------ uitlenen popup-----------------------------*/
+/* ------------ Innemen popup-----------------------------*/
+/* ------------ scahde melden popup-----------------------------*/
