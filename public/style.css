@@ -43,8 +43,8 @@ header{
         }
     }
 }
-/*search-bar*/
-.search-bar {
+/*zoekbalk*/
+.zoekbalk {
   display: flex;
   
   input {
@@ -180,7 +180,7 @@ header{
     gap: 1rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
-    .search-bar {
+    .zoekbalk {
         width: 100%;  
     }
     .button-box{
@@ -192,7 +192,7 @@ header{
     }
 }
 .instrument-table-section{
-    .instrumenten-nav{
+    .instrumenten-categorie-nav{
         padding-top: 5em;
         margin-bottom: 2em;
         ul{
@@ -298,8 +298,7 @@ header{
     td:nth-child(3),
     td:nth-child(4),
     td:nth-child(5),
-    td:nth-child(7),
-    td:nth-child(8){
+    td:nth-child(7){
         display: none;
     }
 
@@ -326,9 +325,7 @@ header{
 
     @media (min-width: 1200px) {
         th:nth-child(7),
-        td:nth-child(7),
-        th:nth-child(8),
-        td:nth-child(8)
+        td:nth-child(7)
         {
             display: table-cell;
         }
@@ -389,7 +386,6 @@ header{
         background-image: url('/icons/unknown.svg');
     } 
 }
-
 /* ------------ Instrument_detail pagina-------------------*/
 .detail-main{
     width: 90vw;
@@ -398,7 +394,6 @@ header{
         color: var(--color-primary);
     }
 }
-
 .detail-hero{
     figure{
         width: 1rem;

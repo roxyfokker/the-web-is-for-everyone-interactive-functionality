@@ -1,0 +1,11 @@
+<tr>
+    <td scope="row">{{ instrument.name }}</td>
+    <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
+    <td>{{ instrument.type | default: "Onbekend" }}</td>
+    <td>{{ instrument.brand | default: "Onbekend" }}</td>
+    <td>{{ instrument.property | default: "Onbekend" }}</td>
+    <td>
+        {% include 'partials/componenten/status_label.liquid', status: instrument.status %}
+    </td>
+    <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
+</tr>
