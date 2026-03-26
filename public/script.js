@@ -16,4 +16,13 @@ btnPopupSluiten.forEach(btn => {
     });
 });
 
+// werkt niet 
+const form = document.querySelector('form');
+const melding = document.getElementById('form-melding');
 
+form.addEventListener('submit', (event) => {
+    if (!form.checkValidity()) {
+        event.preventDefault(); 
+        melding.classList.remove('hidden');
+    }
+});

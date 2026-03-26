@@ -316,7 +316,6 @@ form{
   @supports(selector(:has(*))) {
     label:has(input:required:invalid:not(:placeholder-shown)) {
       color: var(--color-status-borrowed-hex);
-      background-color: var(--color-status-borrowed-bg);
     }  
   }
 }
@@ -392,5 +391,23 @@ form{
         cursor: pointer;
       }
     }
+  }
+}
+
+.form-melding{
+  border: solid 0.2rem var(--color-status-borrowed-hex);
+  background-color: var(--color-status-borrowed-bg);
+  border-radius: 0.4rem;
+  color: var(--color-status-borrowed);
+  padding: 1rem;
+  p{
+    font-size: 1rem;
+    margin-bottom: 0;
+    &:first-of-type{
+      font-weight: bold;
+    }
+  }
+  &.hidden{
+    display: none;
   }
 }
