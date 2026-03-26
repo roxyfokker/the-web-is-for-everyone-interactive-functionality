@@ -60,7 +60,6 @@
         <label>Naam instrument *
           <input type="text" name="naam" placeholder="bijv. gitaar 02" required>
         </label>
-        
 
         <label for="categorie">Categorie instrument *
           <select id="categorie" name="categorie" required>
@@ -72,7 +71,6 @@
             <option value="overig">Overig</option>
           </select>
         </label>
-        
 
         <label for="serienummer">Serienummer *
           <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
@@ -85,18 +83,16 @@
         <fieldset>
             <legend>Foto instrument</legend>
 
-            <label for="foto">
+            <div class="upload-box">
+              <label for="foto">
                 <span>+ Foto uploaden</span>
                 <span>JPG, PNG of WEBP</span>
-            </label>
+              </label>
 
-            <input id="foto" type="file" name="foto" accept=".jpg,.png,.webp" hidden>
+              <input id="foto" type="file" name="foto" accept=".jpg,.png,.webp" hidden>
+            </div>
+            
 
-            <img id="preview" alt="Preview van afbeelding" hidden>
-            <button id="verwijder-btn" type="button" hidden>
-                verwijder
-                <img src="/icons/close.svg" alt="verwijderen">
-            </button>
         </fieldset>
 
         <div class="knoppen-box">
