@@ -199,6 +199,9 @@ header{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
+            button{
+                justify-content: center;
+            }
     }
 }
 .instrument-toevoegen-popup.is-open{
