@@ -16,13 +16,14 @@ btnPopupSluiten.forEach(btn => {
     });
 });
 
-// werkt niet 
-const form = document.querySelector('form');
-const melding = document.getElementById('form-melding');
 
-form.addEventListener('submit', (event) => {
-    if (!form.checkValidity()) {
-        event.preventDefault(); 
-        melding.classList.remove('hidden');
-    }
+// werkt niet 
+const form = document.querySelector('.instrument-toevoegen-form');
+const melding = document.querySelector('.form-melding');
+
+form.addEventListener('submit', function(e) {
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    melding.style.display = 'block';
+  }
 });
