@@ -1,0 +1,32 @@
+{% if actie %}
+<dialog id="actie-popup" open> <!--https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog-->
+  
+  {% if actie == 'true' %}
+    <h2>Wat wil je doen?</h2>
+    <a href="?action=innemen">Innemen</a>
+    <a href="?action=uitnemen">Uitnemen</a>
+    <a href="?action=schade">Schade melden</a>
+    <a href="?">Sluiten</a>
+
+  {% elsif actie == 'innemen' %}
+    <h2>Innemen</h2>
+    <form method="POST" action="/instrumenten/{{ instrument.id }}/innemen">
+      <button type="submit">Bevestigen</button>
+    </form>
+
+  {% elsif actie == 'uitnemen' %}
+    <h2>Uitnemen</h2>
+    <form method="POST" action="/instrumenten/{{ instrument.id }}/uitnemen">
+      <button type="submit">Bevestigen</button>
+    </form>
+
+  {% elsif actie == 'schade' %}
+    <h2>Schade melden</h2>
+    <form method="POST" action="/instrumenten/{{ instrument.id }}/schade">
+      <button type="submit">Melden</button>
+    </form>
+
+  {% endif %}
+
+</dialog>
+{% endif %}

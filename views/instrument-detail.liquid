@@ -1,5 +1,6 @@
-{%  render 'partials/head.liquid', title: "Instrument details" %}
-{% include 'partials/componenten/header.liquid' %}
+{% render 'partials/head.liquid', title: "Instrument details" %}
+{% render 'partials/componenten/header.liquid' %}
+{% render 'partials/acties/actie-popup.liquid', instrument: instrument, action: action %}
 
 <main class="detail-main">
     <section class="detail-hero">

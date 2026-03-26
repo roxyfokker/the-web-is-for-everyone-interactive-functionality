@@ -48,12 +48,16 @@ app.get('/instrumenten', async function (request, response) {
   });
 });
 
-app.get('/acties', async function (request, response) {
-  response.render('acties_overzicht.liquid');
-});
-
 app.get('/instrumenten/:key', async function (request, response) {
-  response.render('instrument-detail.liquid');
+  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.key;
+
+  const instrumentsResponse = await fetch(url) 
+  const instrumentsResponseJSON = await instrumentsResponse.json()
+
+  response.render('instrument-detail.liquid', {
+    instruments: instrumentsResponseJSON.data,
+    actie:request.query.action || null
+  });
 });
 
 /*
