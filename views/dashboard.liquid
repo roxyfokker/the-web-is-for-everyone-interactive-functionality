@@ -57,24 +57,30 @@
     </div>
         
     <form action="/instrumenten" method="POST" >
-        <label for="naam">Naam instrument</label>
-        <input type="text" id="naam" name="naam" placeholder="bijv. gitaar 02" required>
+        <label>Naam instrument *
+          <input type="text" name="naam" placeholder="bijv. gitaar 02" required>
+        </label>
+        
 
-        <label for="categorie">Categorie instrument</label>
-        <select id="categorie" name="categorie" required>
+        <label for="categorie">Categorie instrument *
+          <select id="categorie" name="categorie" required>
             <option value="" disabled selected hidden>Kies categorie</option>
             <option value="snaarinstrument">Snaarinstrument</option>
             <option value="blaasinstrument">Blaasinstrument</option>
             <option value="toetsinstrument">Toetsinstrument</option>
             <option value="slagwerk">Slagwerk</option>
             <option value="overig">Overig</option>
-        </select>
+          </select>
+        </label>
+        
 
-        <label for="serienummer">Serienummer</label>
-        <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
+        <label for="serienummer">Serienummer *
+          <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
+        </label>
 
-        <label for="beschrijving">Beschijving</label>
-        <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument..."></textarea>
+        <label for="beschrijving">Beschijving
+          <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument..."></textarea>
+        </label>
 
         <fieldset>
             <legend>Foto instrument</legend>
