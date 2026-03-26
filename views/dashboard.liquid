@@ -47,12 +47,13 @@
 
 </dl>
 
-<section>
+
+<section >
     <div class="popup-header">
         <h2>Nieuw instrument toevoegen</h2>
-        <button class="icon-btn">
-            Sluiten
+        <button class="popup-sluiten">
             <img src="/icons/close.svg" alt="">
+            Sluiten
         </button>
     </div>
         
@@ -73,7 +74,7 @@
         </label>
 
         <label for="serienummer">Serienummer *
-          <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
+          <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
         </label>
 
         <label for="beschrijving">Beschijving
@@ -96,8 +97,8 @@
         </fieldset>
 
         <div class="knoppen-box">
-            <button type="button" class="button-secondary">annuleren</button>
-            <button type="submit" class="button-primary" >opslaan</button>
+            <button type="button" class="button-secondary">Annuleren</button>
+            <button type="submit" class="button-primary" >Opslaan</button>
         </div>
 
     </form>

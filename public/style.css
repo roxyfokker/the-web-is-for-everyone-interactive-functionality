@@ -166,15 +166,17 @@ header{
     }
 }
 /* ------------ instrument toevoegen popup-----------------*/
-.instrument-popup{
+.instrument-toevoegen-popup{
     display: none;
-    position: absolute;
+    position: fixed;
     background-color: var(--color-neutral-0);
     border: solid var(--color-primary) 0.2rem;
     border-radius: 0.375em; 
     padding: 1rem;
     width: 80vw;
-    height: 70vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 9999;   
 
     .popup-header{
@@ -182,20 +184,24 @@ header{
         background-color: inherit;
         display: flex;
         justify-content: space-between;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .knoppen-box{
-        display: flex;
-        button{
-            width: 100%;
+        margin-bottom: 1.5rem;
+        .popup-sluiten{
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            border: none;
+            img{
+                height: 1.5rem;
+            }
         }
     }
+    .knoppen-box{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+    }
 }
-.instrument-popup.is-open{
+.instrument-toevoegen-popup.is-open{
     display: block;
 }
 /* ------------ Instrument_overview pagina-----------------*/
