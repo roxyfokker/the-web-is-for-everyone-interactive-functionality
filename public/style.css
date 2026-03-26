@@ -165,6 +165,38 @@ header{
     }
 }
 /* ------------ instrument toevoegen popup-----------------*/
+.instrument-popup{
+    display: none;
+    position: absolute;
+    background-color: var(--color-neutral-0);
+    border: solid var(--color-primary) 0.2rem;
+    border-radius: 0.375em; 
+    padding: 1rem;
+    width: 80vw;
+    height: 70vh;
+    z-index: 9999;   
+
+    .popup-header{
+        border-bottom: solid var(--color-primary) 0.1rem;
+        background-color: inherit;
+        display: flex;
+        justify-content: space-between;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .knoppen-box{
+        display: flex;
+        button{
+            width: 100%;
+        }
+    }
+}
+.instrument-popup.is-open{
+    display: block;
+}
 /* ------------ Instrument_overview pagina-----------------*/
 .instrument-overview-main{
     width: 90vw;
