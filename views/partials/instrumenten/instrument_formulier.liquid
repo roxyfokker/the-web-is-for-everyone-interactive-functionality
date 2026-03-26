@@ -1,0 +1,52 @@
+<section class="instrument-popup">
+    <div class="popup-header">
+        <h2>Nieuw instrument toevoegen</h2>
+        <button class="icon-btn">
+            Sluiten
+            <img src="/icons/close.svg" alt="">
+        </button>
+    </div>
+        
+    <form action="/instrumenten" method="POST" >
+        <label for="naam">Naam instrument *</label>
+        <input type="text" id="naam" name="naam" placeholder="bijv. gitaar 02" required>
+
+        <select id="categorie" name="categorie" required>
+            <option value="">Kies categorie</option>
+            <option value="snaarinstrument">Snaarinstrument</option>
+            <option value="blaasinstrument">Blaasinstrument</option>
+            <option value="toetsinstrument">Toetsinstrument</option>
+            <option value="slagwerk">Slagwerk</option>
+            <option value="overig">Overig</option>
+        </select>
+
+        <label for="serienummer">Serienummer *</label>
+        <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
+
+        <label for="beschrijving">Beschijving</label>
+        <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument"></textarea>
+
+        <fieldset>
+            <legend>Foto instrument</legend>
+
+            <label for="foto">
+                <span>+ Foto uploaden</span>
+                <span>JPG, PNG of WEBP</span>
+            </label>
+
+            <input id="foto" type="file" name="foto" accept=".jpg,.png,.webp" hidden>
+
+            <img id="preview" alt="Preview van afbeelding" hidden>
+            <button id="verwijder-btn" type="button">
+                verwijder
+                <img src="/icons/close.svg" alt="verwijderen">
+            </button>
+        </fieldset>
+
+        <div class="knoppen-box">
+            <button type="button" class="button-secondary">annuleren</button>
+            <button type="submit" class="button-primary" >opslaan</button>
+        </div>
+
+    </form>
+</section>
