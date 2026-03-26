@@ -1,12 +1,19 @@
-const btnPopup = document.querySelector('.button--new');
+// Instrument toevoegen pop open en sluit met blur
 const popup = document.querySelector('.instrument-toevoegen-popup');
-const btnPopup2 = document.querySelector('.popup-sluiten')
+const btnPopupOpen = document.querySelector('.button--new');
+const btnPopupSluiten = document.querySelectorAll('.popup-sluiten, .annuleren')
+const overlay = document.querySelector('.overlay');
 
-btnPopup.addEventListener('click', () => {
+btnPopupOpen.addEventListener('click', () => {
     popup.classList.add('is-open');
+    overlay.classList.add('is-open');
 });
 
-btnPopup2.addEventListener('click', () => {
-    popup.classList.remove('is-open');
+btnPopupSluiten.forEach(btn => {
+    btn.addEventListener('click', () => {
+        popup.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+    });
 });
+
 

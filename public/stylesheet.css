@@ -309,12 +309,14 @@ form{
       }
       &:required:invalid:not(:placeholder-shown){
         border:solid 0.15rem var(--color-status-borrowed-hex);
+        background-color: var(--color-status-borrowed-bg);
       }
     }
   }
   @supports(selector(:has(*))) {
     label:has(input:required:invalid:not(:placeholder-shown)) {
       color: var(--color-status-borrowed-hex);
+      background-color: var(--color-status-borrowed-bg);
     }  
   }
 }
@@ -382,6 +384,12 @@ form{
       span{
         color: var(--color-primary-border);
         font-size: 0.8rem;
+      }
+
+      &:hover {
+        border-color: var(--color-primary-hover, #9b59b6);
+        outline: 0.2rem;
+        cursor: pointer;
       }
     }
   }
