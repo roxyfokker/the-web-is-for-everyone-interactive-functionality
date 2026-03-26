@@ -309,6 +309,11 @@ form{
       }
     }
   }
+  @supports(selector(:has(*))) {
+    label:has(input:required:invalid:not(:placeholder-shown)) {
+      color: var(--color-status-borrowed-hex);
+    }  
+  }
 }
 
 form{
