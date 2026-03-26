@@ -46,6 +46,7 @@ header{
 /*zoekbalk*/
 .zoekbalk {
   display: flex;
+  flex-direction: row;
   
   input {
     border: 0.07rem solid var(--color-primary);

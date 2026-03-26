@@ -276,3 +276,79 @@ button{
     filter: brightness(0) invert(1);
   }
 }
+
+/*algemene styling form*/
+
+form{
+  display: flex;
+  flex-direction: column;
+  label{
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    padding-bottom: 0.2rem;
+
+    input:required + &,
+    select:required + &{
+      &::after{
+        content: " *";
+      }
+    }
+  }
+
+  input{
+    padding: 0.8rem;
+    font-size: inherit;
+    border: solid var(--color-primary) 0.05rem;
+    border-radius: 0.375rem;
+    &:hover, &:focus{
+      outline: 0.09rem solid var(--color-primary);
+    }
+    &:valid{
+      background-color: var(--color-primary-bg);
+    }
+  }
+
+  textarea{
+    padding: 0.8rem;
+    font-size: inherit;
+    border: solid var(--color-primary) 0.05rem;
+    border-radius: 0.375rem;
+    &::placeholder{
+      font-family: var(--font-sans);  
+    }
+    &:hover, &:focus{
+      outline: 0.09rem solid var(--color-primary);
+    }
+  }
+
+  select{
+    padding: 0.8rem;
+    font-size: inherit;
+    border: solid var(--color-primary) 0.05rem;
+    border-radius: 0.375rem;
+    color: var(--color-primary);
+    &:hover, &:focus{
+      outline: 0.09rem solid var(--color-primary);
+    }
+    option{
+      color: var(--color-primary);
+      position: relative;
+    }
+
+    &:invalid {
+      color: var(--color-neutral-500);
+      background-color: inherit;
+    }
+    &:valid {
+      background-color: var(--color-primary-bg);
+    }
+  }
+  fieldset{
+    border: none;
+    legend{
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      padding-bottom: 0.2rem;
+    }
+  }
+}

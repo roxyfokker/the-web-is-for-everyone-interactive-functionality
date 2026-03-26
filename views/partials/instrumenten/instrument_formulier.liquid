@@ -21,10 +21,10 @@
         </select>
 
         <label for="serienummer">Serienummer *</label>
-        <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890">
+        <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
 
         <label for="beschrijving">Beschijving</label>
-        <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument"></textarea>
+        <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument..."></textarea>
 
         <fieldset>
             <legend>Foto instrument</legend>
