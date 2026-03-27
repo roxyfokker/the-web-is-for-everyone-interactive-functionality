@@ -19,7 +19,7 @@
         </p>
 
         <table class="instrument-table">
-            {% render 'partials/instrumenten/instrument_tabel_hoofd.liquid' %}
+            {% render 'partials/instrumenten/instrument_tabel_hoofd.liquid', sort: sort %}
             <tbody>
                 {% if instruments.size == 0 %}
                     {% render 'partials/instrumenten/instrument_leeg.liquid' %}

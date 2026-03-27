@@ -32,10 +32,19 @@ app.get('/', async function (request, response) {
 
 app.get('/instrumenten', async function (request, response) {
 
+  console.log(request.query.sort)
+
   let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
+
+  let hasQuery = false;
 
   if (request.query.status) {
     url = url + '?filter[status][_eq]=' + request.query.status
+    hasQuery = true;
+  }
+
+  if (request.query.sort) {
+    url = url + (hasQuery ? '&' : '?') + 'sort=' + request.query.sort;
   }
 
   const instrumentsResponse = await fetch(url) 
@@ -44,7 +53,8 @@ app.get('/instrumenten', async function (request, response) {
   response.render('instrumenten_overzicht.liquid', {
     instruments: instrumentsResponseJSON.data,
     path: request.path,
-    status: request.query.status || null
+    status: request.query.status || null,
+    sort: request.query.sort || null
   });
 });
 
