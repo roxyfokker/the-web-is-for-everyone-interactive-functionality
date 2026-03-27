@@ -32,8 +32,6 @@ app.get('/', async function (request, response) {
 
 app.get('/instrumenten', async function (request, response) {
 
-  console.log(request.query.sort)
-
   let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
 
   let hasQuery = false;
