@@ -8,10 +8,12 @@
         {% include 'partials/componenten/status_label.liquid', status: instrument.status %}
     </td>
     <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
+    {% comment %}
     <td>
         <form action="/instrumenten/delete" method="POST">
             <input type="hidden" name="id" value="{{ instrument.id }}">
             <button type="submit">Verwijder</button>
         </form>
     </td>
+    {% endcomment %}
 </tr>
