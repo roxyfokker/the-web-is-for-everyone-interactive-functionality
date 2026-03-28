@@ -7,7 +7,7 @@
     {% render 'partials/instrumenten/instrument_nav.liquid' %}
  
     <section class="instrument-table-section">
-        {% render 'partials/instrumenten/instrument_categorie_nav.liquid' %}
+        {% render 'partials/instrumenten/instrument_categorie_nav.liquid', type: type %}
         {% render 'partials/instrumenten/instrument_formulier.liquid' %}
 
         <p>{{ totalItems }} instrumenten gevonden</p>

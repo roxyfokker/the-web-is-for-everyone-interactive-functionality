@@ -304,50 +304,45 @@ tr:target {
         border: none;
     }
 }
-.instrument-table-section{
-    .instrumenten-categorie-nav{
-        padding-top: 5em;
-        margin-bottom: 2em;
-        ul{
-            display: flex;
+.instrumenten-categorie-nav{
+    padding-top: 5em;
+    margin-bottom: 2em;
+    ul{
+        display: flex;
+        position: relative;
+        line-height: 2.5;
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            border-radius: 1rem;
+        }
+        li{
             position: relative;
-            line-height: 2.5;
-            &::after{
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background-color: var(--color-primary);
-                border-radius: 1rem;
-            }
-            li{
-                position: relative;
-            }
+            padding: 0 2em;
+        }
+        li.active::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
+        }
 
-            li.active {
-                &::after {
-                    content: "";
-                    position: absolute;
-                    bottom: -2px;
-                    left: 0;
-                    right: 0;
-                    height: 6px;
-                    background-color: var(--color-primary);
-                    border-radius: 1rem;
-                    z-index: 1;
-                }
-            }
-
-            a{
-                text-decoration: none;
-                padding: 0 2em;
-                font-size: 1.2rem;
-            }
+        a{
+            text-decoration: none;
+            font-size: 1.2rem;
         }
     }
 }
+
 .instrument-table{
     border-radius: 0.375em;
     border: 2px solid var(--color-primary); 

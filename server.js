@@ -31,7 +31,6 @@ app.get('/', async function (request, response) {
 });
 
 app.get('/instrumenten', async function (request, response) {
-
   //paginaas
   const page = parseInt(request.query.page) || 1; //ai
   const limit = 20; // ai
@@ -43,6 +42,10 @@ app.get('/instrumenten', async function (request, response) {
   // filteren
   if (request.query.status) {
     params.append('filter[status][_eq]', request.query.status);
+  }
+
+  if (request.query.type) {
+    params.append('filter[type][_eq]', request.query.type);
   }
 
   // sorteren
@@ -66,6 +69,7 @@ app.get('/instrumenten', async function (request, response) {
     instruments: instrumentsResponseJSON.data,
     path: request.path,
     status: request.query.status || null,
+    type: request.query.type || '',
     sort: request.query.sort || null,
     totalItems: totalItems,
     pages: pages
