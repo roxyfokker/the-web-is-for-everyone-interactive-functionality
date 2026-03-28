@@ -32,8 +32,7 @@ app.get('/', async function (request, response) {
 
 app.get('/instrumenten', async function (request, response) {
 
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?sort=-id'
-
+  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
   let hasQuery = false;
 
   if (request.query.status) {
@@ -41,8 +40,9 @@ app.get('/instrumenten', async function (request, response) {
     hasQuery = true;
   }
 
+  const sort = request.query.sort || '-id'
   if (request.query.sort) {
-    url = url + (hasQuery ? '&' : '?') + 'sort=' + request.query.sort;
+    url = url + (hasQuery ? '&' : '?') + 'sort=' + sort
   }
 
   const instrumentsResponse = await fetch(url) 
@@ -70,10 +70,17 @@ app.get('/instrumenten/:key', async function (request, response) {
 
 /*
 app.post('/instrumenten', async function (request, response){
+
+  const key = request.body.name                // "  Gitaar Akoestisch  "
+  .toLowerCase()                               // "  gitaar akoestisch  "
+  .trim()                                      // "gitaar akoestisch"
+  .replace(/\s+/g, '-')                        // "gitaar-akoestisch"   `\s` betekent een spatie    'g' overal in de tekst
+
   await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
     method: 'POST',
     body: JSON.stringify({
       name: request.body.name,
+      key: key,
       instrument: request.body.instrument,
       brand: request.body.brand,
       serial_number: request.body.serial_number,
@@ -88,12 +95,7 @@ app.post('/instrumenten', async function (request, response){
     }
   });
 
-  const key = request.body.name                // "  Gitaar Akoestisch  "
-  .toLowerCase()                               // "  gitaar akoestisch  "
-  .trim()                                      // "gitaar akoestisch"
-  .replace(/\s+/g, '-')                        // "gitaar-akoestisch"   `\s` betekent een spatie    'g' overal in de tekst
-
-  response.redirect(303, '/instrumenten');
+  response.redirect(303, '/instrumenten=?nieuw' + key);
 });
 */
 
