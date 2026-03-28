@@ -69,6 +69,33 @@ app.get('/instrumenten/:key', async function (request, response) {
 });
 
 /*
+app.post('/instrumenten', async function (request, response){
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
+    method: 'POST',
+    body: JSON.stringify({
+      name: request.body.name,
+      instrument: request.body.instrument,
+      brand: request.body.brand,
+      serial_number: request.body.serial_number,
+      type: request.body.type,
+      property: request.body.property,
+      storage_room: request.body.storage_room,
+      details: request.body.details,
+      status: request.body.status,
+    }),
+    headers: {
+       'Content-Type': 'application/json;charset=UTF-8'
+    }
+  });
+
+  response.redirect(303, '/instrumenten');
+});
+*/
+
+
+
+
+/*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
   

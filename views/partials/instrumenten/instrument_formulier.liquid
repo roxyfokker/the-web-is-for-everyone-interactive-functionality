@@ -12,12 +12,25 @@
             <p><strong>Controleer de gemarkeerde Velden</strong></p>
             <p>Vul alle verplichte Velden in om verder te gaan.</p>
         </div>
-        <label>Naam instrument *
-          <input type="text" name="naam" placeholder="bijv. gitaar 02" required>
+
+        <label>Naam *
+          <input type="text" name="name" placeholder="bijv. gitaar 02" required>
         </label>
 
-        <label for="categorie">Categorie instrument *
-          <select id="categorie" name="categorie" required>
+        <label>Instrument *
+          <input type="text" name="instrument" placeholder="gitaar akoestisch" required>
+        </label>
+        
+        <label>Merk *
+          <input type="text" name="brand" placeholder="bijv. Fender" required>
+        </label>
+
+        <label>Serienummer *
+          <input type="text" id="serienummer" name="serial_number" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
+        </label>
+
+        <label >Categorie instrument *
+          <select name="type" required>
             <option value="" selected>-- Kies categorie --</option>
             <option value="snaarinstrument">Snaarinstrument</option>
             <option value="blaasinstrument">Blaasinstrument</option>
@@ -27,12 +40,31 @@
           </select>
         </label>
 
-        <label for="serienummer">Serienummer *
-          <input type="text" id="serienummer" name="serienummer" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
+        <label>Eigendom van: *
+          <input type="text" name="property" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
+        </label>
+
+        <label>Dit instrument hoort thuis in: 
+          <select name="storage_room" required>
+            <option value="" selected>-- Kies locatie --</option>
+            <option value="Instrumentenhok tweede verdieping">Instrumentenhok tweede verdieping</option>
+            <option value="Studio 0.02">Studio 0.02</option>
+            <option value="Studio 0.03">Studio 0.03</option>
+            <option value="Studio 0.04">Studio 0.04</option>
+            <option value="Zaal A">Zaal A</option>
+            <option value="Zaal B">Zaal B</option>
+            <option value="Studio 2.01">Studio 2.01</option>
+            <option value="Studio 2.02">Studio 2.02</option>
+            <option value="Studio 2.03">Studio 2.03</option>
+            <option value="Studio 2.04">Studio 2.04</option>
+            <option value="Studio 2.05">Studio 2.05</option>
+            <option value="Studio 2.06">Studio 2.06</option>
+            <option value="Studio 2.07">Studio 2.07</option>
+          </select>
         </label>
 
         <label for="beschrijving">Beschijving
-          <textarea id="beschrijving" name="beschrijving" placeholder="details van het instrument..."></textarea>
+          <textarea name="details" placeholder="details van het instrument..."></textarea>
         </label>
 
         <fieldset>
@@ -44,11 +76,11 @@
                 <span>JPG, PNG of WEBP</span>
               </label>
 
-              <input id="foto" type="file" name="foto" accept=".jpg,.png,.webp" hidden>
+              <input type="file" name="photo" accept=".jpg,.png,.webp" hidden disabled>
             </div>
-            
-
         </fieldset>
+
+        <input type="hidden" name="status" value="Beschikbaar">
 
         <div class="knoppen-box">
             <button type="button" class="button-secondary annuleren">Annuleren</button>
