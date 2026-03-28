@@ -232,10 +232,10 @@ header{
 tr:target {
     background-color: var(--color-status-available-border);
 }
-@supports (animation: fadeHighlight 3s ease forwards) {
+@supports (animation: fadeHighlight 8s ease forwards) {
     tr:target {
         background-color: transparent;
-        animation: fadeHighlight 3s ease forwards;
+        animation: fadeHighlight 8s ease forwards;
     }
 
     @keyframes fadeHighlight {
