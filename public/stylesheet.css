@@ -319,7 +319,6 @@ form{
     }  
   }
 }
-
 form{
   select{
     padding: 0.6rem 0.8rem;
@@ -346,7 +345,6 @@ form{
     }
   }
 }
-
 form{
   textarea{
     padding: 0.6rem 0.8rem;
@@ -361,7 +359,6 @@ form{
     }
   }
 }
-
 form{
   fieldset{
     border: none;
@@ -393,7 +390,6 @@ form{
     }
   }
 }
-
 .form-melding{
   border: solid 0.2rem var(--color-status-borrowed-hex);
   background-color: var(--color-status-borrowed-bg);

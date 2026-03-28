@@ -32,14 +32,14 @@
         </table>
 
 
-        
+
         
         <nav class="paginering">
             {% for i in pages %}
                 {% if i == currentPage %}
-                <button class="actief">{{ i }}</button>
+                    <button class="actief button-secondary">{{ i }}</button>
                 {% else %}
-                <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
+                    <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
                 {% endif %}
             {% endfor %}
         </nav>
