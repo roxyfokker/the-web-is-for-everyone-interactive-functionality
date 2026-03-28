@@ -7,12 +7,14 @@ const overlay = document.querySelector('.overlay');
 btnPopupOpen.addEventListener('click', () => {
     popup.classList.add('is-open');
     overlay.classList.add('is-open');
+    document.body.classList.add('no-scroll');
 });
 
 btnPopupSluiten.forEach(btn => {
     btn.addEventListener('click', () => {
         popup.classList.remove('is-open');
         overlay.classList.remove('is-open');
+        document.body.classList.remove('no-scroll');
     });
 });
 
