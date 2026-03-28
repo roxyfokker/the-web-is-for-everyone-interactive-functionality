@@ -229,6 +229,28 @@ header{
 .instrument-toevoegen-popup.is-open{
     display: block;
 }
+tr:target {
+    background-color: var(--color-status-available-border);
+}
+
+@supports (animation: fadeHighlight 3s ease forwards) {
+    tr:target {
+        background-color: transparent;
+        animation: fadeHighlight 3s ease forwards;
+    }
+
+    @keyframes fadeHighlight {
+        0%   { background-color: #4caf50; }
+        100% { background-color: transparent; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+    tr:target {
+      background-color: #4caf50; /* gewoon groen, geen animatie */
+      animation: none;
+    }
+  }
+}
 /* ------------ Instrument_overview pagina-----------------*/
 .instrument-overview-main{
     width: 90vw;

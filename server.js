@@ -41,9 +41,7 @@ app.get('/instrumenten', async function (request, response) {
   }
 
   const sort = request.query.sort || '-id'
-  if (request.query.sort) {
-    url = url + (hasQuery ? '&' : '?') + 'sort=' + sort
-  }
+  url = url + (hasQuery ? '&' : '?') + 'sort=' + sort
 
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
@@ -102,7 +100,7 @@ app.post('/instrumenten', async function (request, response){
   const fetchResponseJSON = await fetchResponse.json()
   console.log('Directus response:', fetchResponseJSON)
 
-  response.redirect(303, '/instrumenten?nieuw=' + key);
+  response.redirect(303, '/instrumenten#' + key);
 });
 
 

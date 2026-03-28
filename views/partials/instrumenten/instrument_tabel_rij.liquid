@@ -1,5 +1,5 @@
 <tr>
-    <td scope="row">{{ instrument.name }}</td>
+    <td id="{{ instrument.key }}" scope="row">{{ instrument.name }}</td>
     <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
     <td>{{ instrument.type | default: "Onbekend" }}</td>
     <td>{{ instrument.brand | default: "Onbekend" }}</td>
