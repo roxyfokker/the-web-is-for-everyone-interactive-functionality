@@ -32,7 +32,7 @@ app.get('/', async function (request, response) {
 
 app.get('/instrumenten', async function (request, response) {
 
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
+  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?sort=-id'
 
   let hasQuery = false;
 
@@ -87,6 +87,11 @@ app.post('/instrumenten', async function (request, response){
        'Content-Type': 'application/json;charset=UTF-8'
     }
   });
+
+  const key = request.body.name                // "  Gitaar Akoestisch  "
+  .toLowerCase()                               // "  gitaar akoestisch  "
+  .trim()                                      // "gitaar akoestisch"
+  .replace(/\s+/g, '-')                        // "gitaar-akoestisch"   `\s` betekent een spatie    'g' overal in de tekst
 
   response.redirect(303, '/instrumenten');
 });
