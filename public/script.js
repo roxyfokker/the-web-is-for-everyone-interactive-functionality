@@ -18,14 +18,5 @@ btnPopupSluiten.forEach(btn => {
     });
 });
 
-
-// werkt niet 
-const form = document.querySelector('.instrument-toevoegen-form');
-const melding = document.querySelector('.form-melding');
-
-form.addEventListener('submit', function(e) {
-  if (!form.checkValidity()) {
-    e.preventDefault();
-    melding.style.display = 'block';
-  }
-});
+// scrollen na toevoegen new blokeren
+if (window.location.hash) {window.scrollTo(0, 0);}
