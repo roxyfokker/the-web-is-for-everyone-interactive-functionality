@@ -68,15 +68,19 @@ app.get('/instrumenten/:key', async function (request, response) {
   });
 });
 
-/*
+
 app.post('/instrumenten', async function (request, response){
+
+  console.log('Formulier data:', request.body) //test
 
   const key = request.body.name                // "  Gitaar Akoestisch  "
   .toLowerCase()                               // "  gitaar akoestisch  "
   .trim()                                      // "gitaar akoestisch"
   .replace(/\s+/g, '-')                        // "gitaar-akoestisch"   `\s` betekent een spatie    'g' overal in de tekst
 
-  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
+  console.log('Gegenereerde key:', key)        //test
+
+  const fetchResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
     method: 'POST',
     body: JSON.stringify({
       name: request.body.name,
@@ -95,9 +99,12 @@ app.post('/instrumenten', async function (request, response){
     }
   });
 
-  response.redirect(303, '/instrumenten=?nieuw' + key);
+  const fetchResponseJSON = await fetchResponse.json()
+  console.log('Directus response:', fetchResponseJSON)
+
+  response.redirect(303, '/instrumenten?nieuw=' + key);
 });
-*/
+
 
 
 
