@@ -69,16 +69,13 @@ app.get('/instrumenten/:key', async function (request, response) {
 
 app.post('/instrumenten', async function (request, response){
 
-  console.log('Formulier data:', request.body) //test
-
   const key = request.body.name                // "  Gitaar Akoestisch  "
   .toLowerCase()                               // "  gitaar akoestisch  "
   .trim()                                      // "gitaar akoestisch"
   .replace(/\s+/g, '-')                        // "gitaar-akoestisch"   `\s` betekent een spatie    'g' overal in de tekst
 
-  console.log('Gegenereerde key:', key)        //test
 
-  const fetchResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/',{
     method: 'POST',
     body: JSON.stringify({
       name: request.body.name,
@@ -97,12 +94,24 @@ app.post('/instrumenten', async function (request, response){
     }
   });
 
-  const fetchResponseJSON = await fetchResponse.json()
-  console.log('Directus response:', fetchResponseJSON)
-
   response.redirect(303, '/instrumenten#' + key);
 });
 
+/*
+app.post('/instrumenten/delete', async function (request, response){
+
+  console.log('Delete aangeroepen')
+  console.log('ID:', request.body.id)
+
+   const fetchResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.body.id, {
+    method: 'DELETE'
+  });
+
+  console.log('Directus status:', fetchResponse.status)
+
+  response.redirect(303, '/instrumenten');
+});
+*/
 
 
 
