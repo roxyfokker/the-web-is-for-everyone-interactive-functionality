@@ -9,14 +9,8 @@
     <section class="instrument-table-section">
         {% render 'partials/instrumenten/instrument_categorie_nav.liquid' %}
         {% render 'partials/instrumenten/instrument_formulier.liquid' %}
-        <p>
-            {{ instruments | size }} Instrumenten
-            {% if instruments.size == 1 %}
-                instrument
-            {% else %}
-                instrumenten
-            {% endif %}
-        </p>
+
+        <p>{{ totalItems }} instrumenten gevonden</p>
 
         <table class="instrument-table">
             {% render 'partials/instrumenten/instrument_tabel_hoofd.liquid', sort: sort %}
@@ -35,15 +29,16 @@
 
         
         <nav class="paginering">
+            {% assign cp = currentPage | plus: 0 %}
             {% for i in pages %}
-                {% if i == currentPage %}
-                    <button class="actief button-secondary">{{ i }}</button>
+                {% assign ip = i | plus: 0 %}
+                {% if ip == cp %}
+                <button class="actief">{{ i }}</button>
                 {% else %}
-                    <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
+                <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
                 {% endif %}
             {% endfor %}
         </nav>
-
 
 
     </section>

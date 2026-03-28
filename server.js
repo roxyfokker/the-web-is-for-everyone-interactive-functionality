@@ -33,7 +33,7 @@ app.get('/', async function (request, response) {
 app.get('/instrumenten', async function (request, response) {
 
   //paginaas
-  const page = parseInt(request.query.page) || 1; // ai
+  const page = parseInt(request.query.page) || 1; //ai
   const limit = 20; // ai
   const offset = (page - 1) * limit; // ai
 
@@ -48,8 +48,6 @@ app.get('/instrumenten', async function (request, response) {
   // sorteren
   params.append('sort', request.query.sort || '-id');
 
-
-
   // pagins 
   params.append('limit', limit); // ai
   params.append('offset', offset); // ai
@@ -57,23 +55,19 @@ app.get('/instrumenten', async function (request, response) {
   params.append('meta', 'total_count'); // ai
   url = url + '?' + params.toString(); // ai
 
-
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
-
-
 
   const totalItems = instrumentsResponseJSON.meta.total_count; // ai
   const totalPages = Math.ceil(totalItems / limit); // ai
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1); // ai
-
-
 
   response.render('instrumenten_overzicht.liquid', {
     instruments: instrumentsResponseJSON.data,
     path: request.path,
     status: request.query.status || null,
     sort: request.query.sort || null,
+    totalItems: totalItems,
     pages: pages
   });
 });

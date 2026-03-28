@@ -250,7 +250,6 @@ tr:target {
     }
   }
 }
-
 .paginering{
     margin: auto;
     text-align: center;
@@ -270,8 +269,14 @@ tr:target {
             background-color: var(--color-primary);
             color: var(--color-neutral-0);
         }
+        
     }
    
+}
+.paginering button.actief,
+.paginering a.actief {
+    background-color: var(--color-primary);
+    color: var(--color-neutral-0);
 }
 /* ------------ Instrument_overview pagina-----------------*/
 .instrument-overview-main{
