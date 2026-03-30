@@ -1,5 +1,5 @@
-{% render 'partials/head.liquid', title: title %}
-{% include 'partials/componenten/header.liquid', path: path %}
+{% layout 'layouts/base.liquid' %}
+{% block content %}
 
 <dl class="status-overview">
 
@@ -46,3 +46,4 @@
   </div>
 
 </dl>
+{% endblock %}

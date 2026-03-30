@@ -1,25 +1,113 @@
-{% render 'partials/head.liquid', title: "Instrumenten overzicht" %}
-{% render 'partials/componenten/header.liquid', path: path %}
+{% layout 'layouts/base.liquid' %}
+{% block content %}
 <div class="overlay"></div>
 <main class="instrument-overview-main">
     <h2>Overzicht van de instrumenten</h2>
 
-    {% render 'partials/instrumenten/instrument_nav.liquid' %}
+    <section class="instrument-nav-panel">
+        <form action="" class="zoekbalk" id="zoekbalk">
+            <input id="zoekbalk" placeholder="zoeken" type="text">
+            <button></button>
+        </form>
+        <div class="button-box">
+            <button class="button button-primary button--new">New instrument toevoegen</button>
+            <select class="button button-secondary button--filter" onchange="if(this.value) window.location.href=this.value">
+                <option value="">Filters</option>
+                <option value="/instrumenten?status=Beschikbaar">Beschikbaar</option>
+                <option value="/instrumenten?status=Uitgeleend">Uitgeleend</option>
+                <option value="/instrumenten?status=In reparatie">In reparatie</option>
+                <option value="/instrumenten">Geen filters</option>
+            </select>
+        </div> 
+        
+        <fieldset class="view-toggle">
+            <button class="button button-primary button--list">List</button>
+            <button class="button button-secondary button--grid">Grid</button>
+        </fieldset>
+    </section>
+
  
     <section class="instrument-table-section">
-        {% render 'partials/instrumenten/instrument_categorie_nav.liquid', type: type %}
-        {% render 'partials/instrumenten/instrument_formulier.liquid' %}
+        <nav class="instrumenten-categorie-nav">
+            <ul>
+                <li class="{% if type == nil or type == blank %}active{% endif %}"><a href="/instrumenten">Alle</a></li>
+                <li class="{% if type == 'snaarinstrument' %}active{% endif %}"><a href="/instrumenten?type=snaarinstrument">Snaarinstrumenten</a></li>
+                <li class="{% if type == 'blaasinstrument' %}active{% endif %}"><a href="/instrumenten?type=blaasinstrument">Blaasinstrumenten</a></li>
+                <li class="{% if type == 'toetsinstrument' %}active{% endif %}"><a href="/instrumenten?type=toetsinstrument">Toetsinstrumenten</a></li>
+                <li class="{% if type == 'slagwerk' %}active{% endif %}"><a href="/instrumenten?type=slagwerk">Slagwerk</a></li>
+                <li class="{% if type == 'overig' %}active{% endif %}"><a href="/instrumenten?type=overig">Overig</a></li>
+            </ul>
+        </nav>
+        {% render 'partials/instrument_formulier.liquid' %}
 
         <p>{{ totalItems }} instrumenten gevonden</p>
 
         <table class="instrument-table">
-            {% render 'partials/instrumenten/instrument_tabel_hoofd.liquid', sort: sort %}
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Naam instrument
+                        <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}" data-sort="{% if sort == 'name' %}asc{% elsif sort == '-name' %}desc{% endif %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        Serienummer
+                        <a href="?sort={% if sort == 'serial_number' %}-serial_number{% else %}serial_number{% endif %}" data-sort="{% if sort == 'serial_number' %}asc{% elsif sort == '-serial_number' %}desc{% endif %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Merk</th>
+                    <th scope="col">Eigendom van</th>
+                    <th scope="col">
+                        Status
+                        <a href="?sort={% if sort == 'status' %}-status{% else %}status{% endif %}" data-sort="{% if sort == 'status' %}asc{% elsif sort == '-status' %}desc{% endif %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </th> 
+                    <th scope="col">Link</th> 
+                </tr>
+            </thead>
             <tbody>
                 {% if instruments.size == 0 %}
-                    {% render 'partials/instrumenten/instrument_leeg.liquid' %}
+                    {% render 'partials/instrument_leeg.liquid' %}
                 {% else %}
                     {% for instrument in instruments %}
-                        {% render 'partials/instrumenten/instrument_tabel_rij.liquid', instrument: instrument %}
+                        <tr id="{{ instrument.key }}">
+                            <td  scope="row">{{ instrument.name }}</td>
+                            <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
+                            <td>{{ instrument.type | default: "Onbekend" }}</td>
+                            <td>{{ instrument.brand | default: "Onbekend" }}</td>
+                            <td>{{ instrument.property | default: "Onbekend" }}</td>
+                            <td>
+                                {% include 'partials/status_label.liquid', status: instrument.status %}
+                            </td>
+                            <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
+                            {% comment %}
+                            <td>
+                                <form action="/instrumenten/delete" method="POST">
+                                    <input type="hidden" name="id" value="{{ instrument.id }}">
+                                    <button type="submit">Verwijder</button>
+                                </form>
+                            </td>
+                            {% endcomment %}
+                        </tr>
                     {% endfor %}
                 {% endif %}
             </tbody>
@@ -45,5 +133,4 @@
 
 </main>
 
-
-{% render 'partials/foot.liquid' %}
+{% endblock %}
