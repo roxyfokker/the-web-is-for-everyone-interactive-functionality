@@ -1,7 +1,13 @@
-<tr>
-    <td colspan="7">
-        <p>Nog geen instrumenten </p>
-        <p>Klik op "+ isntrumenten toevoegen" om je eerste instrument op te slaan.</p>
-        <button class="primary-button">nieuw isntrument toevoegen</button>
+<tr class="empty-row">
+    <td class="empty-data" colspan="7">
+        {% if request.params.type != blank %}
+            <p>Je hebt nog geen instrumenten toegevoegd</p>
+            <p>Begin met het toevoegen van je eerste instrument.</p>
+            <button class="primary-button">+ Instrument toevoegen</button>
+        {% else %}
+            <p>Geen instrumenten gevonden</p>
+            <p>Er zijn nog geen instrumenten binnen deze categorie. "{{ type }}".</p>
+            <a href="/instrumenten" class="secondary-button">Bekijk alle instrumenten</a>
+        {% endif %}
     </td>
 </tr>

@@ -18,8 +18,8 @@
 .no-scroll {
   overflow: hidden;
 }
-/* ------------ Partials -----------------------------------*/
-/*head*/
+/* ------------ Components -----------------------------------*/
+/*header*/
 header{
     display: flex;
     justify-content: space-between;
@@ -112,7 +112,44 @@ header{
     }
   }
 }
-/*foot*/
+/*popup*/
+.popup{
+    display: none;
+    position: fixed;
+    background-color: var(--color-neutral-0);
+    border: solid var(--color-primary) 0.2rem;
+    border-radius: 0.375em; 
+    padding: 1rem;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    max-height: 90vh;   
+    overflow-y: auto;
+    .popup-header{
+        border-bottom: solid var(--color-primary) 0.1rem;
+        background-color: inherit;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        .popup-sluiten{
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            border: none;
+            img{
+                height: 1.5rem;
+            }
+        }
+    }
+}
+.popup.is-open{
+    display: block;
+}
+/*empty state*/
+
+
 /* ------------ Index pagina-------------------------------*/
 .status-overview{
     display: grid;
@@ -187,48 +224,16 @@ header{
 }
 /* ------------ instrument toevoegen popup-----------------*/
 .instrument-toevoegen-popup{
-    display: none;
-    position: fixed;
-    background-color: var(--color-neutral-0);
-    border: solid var(--color-primary) 0.2rem;
-    border-radius: 0.375em; 
-    padding: 1rem;
-    width: 80vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    max-height: 90vh;   
-    overflow-y: auto;
-
-    .popup-header{
-        border-bottom: solid var(--color-primary) 0.1rem;
-        background-color: inherit;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        .popup-sluiten{
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            img{
-                height: 1.5rem;
-            }
+    .knoppen-box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        button{
+            justify-content: center;
         }
     }
-    .knoppen-box{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            button{
-                justify-content: center;
-            }
-    }
 }
-.instrument-toevoegen-popup.is-open{
-    display: block;
-}
+
 tr:target {
     background-color: var(--color-status-available-border);
 }
@@ -500,35 +505,7 @@ tr:target {
     } 
 }
 /* ------------ Instrument_detail pagina-------------------*/
-.detail-main{
-    width: 90vw;
-    margin: auto;
-    h2{
-        color: var(--color-primary);
-    }
-}
-.detail-hero{
-    figure{
-        width: 1rem;
-        height: 1rem;
-        overflow: hidden;
-    }
-}
 
-.popup{
-    display: none;
-    position: fixed;
-    background-color: var(--color-neutral-0);
-    border: solid var(--color-primary) 0.2rem;
-    border-radius: 0.375em; 
-    padding: 1rem;
-    width: 80vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-   
 /* ------------ uitlenen popup-----------------------------*/
 /* ------------ Innemen popup-----------------------------*/
 /* ------------ scahde melden popup-----------------------------*/

@@ -86,7 +86,7 @@
             </thead>
             <tbody>
                 {% if instruments.size == 0 %}
-                    {% render 'partials/instrument_leeg.liquid' %}
+                    {% render 'partials/instrument_leeg.liquid', type: type %}
                 {% else %}
                     {% for instrument in instruments %}
                         <tr id="{{ instrument.key }}">
