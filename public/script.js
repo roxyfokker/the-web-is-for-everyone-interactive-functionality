@@ -18,5 +18,11 @@ btnPopupSluiten.forEach(btn => {
     });
 });
 
+overlay.addEventListener('click', () => {
+    popup.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+});
+
 // scrollen na toevoegen new blokeren
 if (window.location.hash) {window.scrollTo(0, 0);}
