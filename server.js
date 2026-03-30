@@ -82,7 +82,7 @@ app.get('/instrumenten/:key', async function (request, response) {
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
 
-  response.render('instrument-detail.liquid', {
+  response.render('instrument_detail.liquid', {
     instruments: instrumentsResponseJSON.data,
     actie:request.query.action || null
   });

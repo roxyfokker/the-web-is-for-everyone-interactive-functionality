@@ -112,41 +112,6 @@ header{
     }
   }
 }
-/*popup*/
-.popup{
-    display: none;
-    position: fixed;
-    background-color: var(--color-neutral-0);
-    border: solid var(--color-primary) 0.2rem;
-    border-radius: 0.375em; 
-    padding: 1rem;
-    width: 80vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    max-height: 90vh;   
-    overflow-y: auto;
-    .popup-header{
-        border-bottom: solid var(--color-primary) 0.1rem;
-        background-color: inherit;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        .popup-sluiten{
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            img{
-                height: 1.5rem;
-            }
-        }
-    }
-}
-.popup.is-open{
-    display: block;
-}
 /*empty state*/
 
 
