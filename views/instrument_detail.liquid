@@ -1,75 +1,96 @@
+{% render 'layouts/base.liquid' %}
+{% block content %}
+    <a href="/instrumenten">Terug naar het overzicht</a>
+    
+    <article class="instrument-article">
+        <section class="photo-section">
+            <span class="div-1">photo 1</span>
+            <span class="div-2">photo 2</span>
+            <span class="div-3">photo 3</span>
+            <span class="div-4">photo 4</span>
+            <span class="div-5">photo 5</span>
+        </section>
+    
+        <section class="instrument-info">
+            <header class="detail-header">
+                <div>
+                    <h2>{{ instruments.name | default: "Onbekend" }}</h2>
+                    <p>{{ instruments.serial_number | default: "Onbekend" }}</p>
+                </div>
+                <div class="status-label">
+                    {% render 'partials/status_label.liquid' %}
+                </div>
+                
+            </header>
 
+            <details>
+                <summary>Beschrijving</summary>
+                <p>{{ instruments.details | default: "Onbekend" }}</p>
+            </details>
 
+            <details class="met-data">
+                <summary>Specificaties</summary>
+                <dl>
+                    <dt>Merk:</dt>
+                    <dd>{{ instruments.brand | default: "Onbekend" }}</dd>
 
+                    <dt>Type:</dt>
+                    <dd>{{ type | default: "Onbekend"}}</dd>
 
-<section class="schade-melden-popup popup">
-    <div class="popup-header">
-        <h2>Schade melden</h2>
-        <button class="popup-sluiten">
-            <img src="/icons/close.svg" alt="">
-            Sluiten
-        </button>
-    </div>
-        
-    <form action="/schade" method="POST" class="schade-melden-form">
-        <div class="form-melding" id="form-melding" style="display: none;">
-            <p><strong>Controleer de gemarkeerde velden</strong></p>
-            <p>Vul alle verplichte velden in om verder te gaan.</p>
-        </div>
+                    <dt>Locatie:</dt>
+                    <dd>{{ instruments.storage_room | default: "Onbekend" }}</dd>
 
-        <div class="instrument-info">
-            <p>Instrument</p>
-            <p>{{ instrument.naam }} — {{ instrument.serial_number }}</p>
-        </div>
+                    <dt>Eigendom:</dt>
+                    <dd>{{ instruments.property | default: "Onbekend" }}</dd>
+                </dl>
+            </details>
+            
 
-        <label>Aangetroffen door *
-          <input type="text" name="" placeholder="Naam van de melder">
-        </label>
+            <details class="met-data">
+                <summary>Uitgeleend</summary>
+                <dl>
+                    <dt>Uitgeleent aan:</dt>
+                    <dd>Pietje Puck</dd>
 
-        <label>Schade aangetroffen bij *
-          <input type="text" name="" placeholder="bijv. naam leerling, docent of ruimte">
-        </label>
+                    <dt>Uitgeleent vanaf:</dt>
+                    <dd>Maart 2025</dd>
+                </dl>
+            </details>
+    
+            <details>
+                <summary>Beheer / actie geschiednis</summary>
+                <ul>
+					<li><time datetime="2026-03-30">30 maart 2026</time> — Schade gemeld</li>
+					<li><time datetime="2026-03-28">28 maart 2026</time> — Ingenomen</li>
+					<li><time datetime="2026-03-20">20 maart 2026</time> — Uitgeleend</li>
+				</ul>
+            </details>
+        </section>
+    </article>
+    
+    <section class="schadehistorie">
+        <header>
+            <h3>SCHADEHISTORIE</h3>
+            <p>4 meldingen</p>
+        </header>
 
-        <input type="hidden" name="datum_melding" value="{{ 'now' | date: '%Y-%m-%d' }}">
-        <input type="hidden" name="instrument_id" value="{{ instrument.id }}">
-        <input type="hidden" name="instrument_naam" value="{{ instrument.naam }}">
-        <input type="hidden" name="serienummer" value="{{ instrument.serial_number }}">
-
-        <fieldset>
-            <legend>Moet het instrument ter reparatie? *</legend>
-
-            <label>
-                <input type="radio" name="reparatie" value="ja">
-                Ja
-            </label>
-
-            <label>
-                <input type="radio" name="reparatie" value="nee">
-                Nee
-            </label>
-        </fieldset>
-
-        <label for="omschrijving">Omschrijving van de schade *
-          <textarea name="omschrijving" placeholder="Beschrijf kort de schade en hoe deze is ontstaan..." required></textarea>
-        </label>
-
-        <fieldset>
-            <legend>Foto van de schade</legend>
-
-            <div class="upload-box">
-              <label for="foto">
-                <span>+ Foto uploaden</span>
-                <span>JPG, PNG of WEBP</span>
-              </label>
-
-              <input type="file" name="photos" accept=".jpg,.png,.webp" multiple hidden>
-            </div>
-        </fieldset>
-
-        <div class="knoppen-box">
-            <button type="button" class="button-secondary annuleren">Annuleren</button>
-            <button type="submit" class="button-primary">Melden</button>
-        </div>
-
-    </form>
-</section>
+        <ul>
+            <li class="melding">
+                <p><strong>Melding #1</strong></p>
+                <p>Schade gemeld op <time datetime="23-04-25"></time>23-04-25</p>
+            </li>
+            <li class="melding">
+                <p><strong>Melding #2</strong></p>
+                <p>Schade gemeld op <time datetime="23-04-25"></time>23-04-25</p>
+            </li>
+            <li class="melding">
+                <p><strong>Melding #3</strong></p>
+                <p>Schade gemeld op <time datetime="23-04-25"></time>23-04-25</p>
+            </li>
+            <li class="melding">
+                <p><strong>Melding #4</strong></p>
+                <p>Schade gemeld op <time datetime="23-04-25"></time>23-04-25</p>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
