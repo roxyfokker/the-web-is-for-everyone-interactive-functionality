@@ -26,3 +26,4 @@ overlay.addEventListener('click', () => {
 
 // scrollen na toevoegen new blokeren
 if (window.location.hash) {window.scrollTo(0, 0);}
+

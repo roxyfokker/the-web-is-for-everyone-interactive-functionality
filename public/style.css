@@ -18,6 +18,9 @@
 .no-scroll {
   overflow: hidden;
 }
+.is-open{
+    display: block;
+}
 /* ------------ Components -----------------------------------*/
 /*header*/
 .main-header{
@@ -468,10 +471,16 @@ tr:target {
     } 
 }
 /* ------------ Instrument_detail pagina-------------------*/
+.terug-knop{
+    padding: 1rem;
+    margin: 5rem;
+}
 .instrument-article{
     display: grid;
     grid-template-columns: 1fr;
     padding-inline: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 
     header{
         display: grid;

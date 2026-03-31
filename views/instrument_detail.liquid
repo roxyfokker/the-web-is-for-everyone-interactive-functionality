@@ -1,8 +1,9 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
-    <a href="/instrumenten">Terug naar het overzicht</a>
-    
+    <a class="terug-knop" href="/instrumenten">Terug naar het overzicht</a>
+
     <article class="instrument-article">
+        
         <section class="photo-section">
             <span class="div-1">photo 1</span>
             <span class="div-2">photo 2</span>
@@ -65,7 +66,9 @@
 					<li><time datetime="2026-03-20">20 maart 2026</time> — Uitgeleend</li>
 				</ul>
             </details>
+            <button class="button-primary btn-bewerken">Instrument info aanpassen</button>
         </section>
+        
     </article>
     
     <section class="schadehistorie">
