@@ -400,10 +400,9 @@ form{
     }
   }
 }
-
 /*popup*/
 .popup{
-    display: block;
+    display: none;
     position: fixed;
     background-color: var(--color-neutral-0);
     border: solid var(--color-primary) 0.2rem;

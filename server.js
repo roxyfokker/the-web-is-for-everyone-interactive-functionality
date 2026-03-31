@@ -84,6 +84,7 @@ app.get('/instrumenten/:key', async function (request, response) {
 
   response.render('instrument_detail.liquid', {
     instruments: instrumentsResponseJSON.data,
+    type: request.query.type || '',
     actie:request.query.action || null
   });
 });
