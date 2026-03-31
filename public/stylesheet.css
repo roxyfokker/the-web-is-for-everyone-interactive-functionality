@@ -34,11 +34,17 @@
   font-style: normal;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  max-width: 100%;
 }
 
 ul,
