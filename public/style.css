@@ -738,19 +738,12 @@ tr:target {
 }
 /* ------------ beheer actie popup-----------------------------*/
 .beheer-actie-popup{
-    display: block;
-    position: fixed;
+    margin: auto;
     background-color: var(--color-neutral-0);
     border: solid var(--color-primary) 0.2rem;
     border-radius: 0.375em; 
     padding: 1rem;
     width: 80vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    max-height: 90vh;   
-    overflow-y: auto;
     h2{
         font-family: var(--font-sans);
         margin-bottom: 0;
@@ -782,9 +775,9 @@ tr:target {
         .status-label{
             margin-left: auto;
         }
-        
     }
-    .actie-knoppen{
+}
+.actie-knoppen{
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -804,8 +797,20 @@ tr:target {
                 height: 1.2rem;
             }
         }
-    }
 }
 /* ------------ uitlenen popup-----------------------------*/
+dialog{
+    background-color: var(--color-neutral-0);
+    border: solid var(--color-primary) 0.2rem;
+    border-radius: 0.375em; 
+    padding: 1rem;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    max-height: 90vh;   
+    overflow-y: auto;
+}
 /* ------------ Innemen popup-----------------------------*/
 /* ------------ scahde melden popup-----------------------------*/

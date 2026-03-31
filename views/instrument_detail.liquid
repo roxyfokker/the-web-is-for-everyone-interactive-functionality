@@ -1,6 +1,6 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
-<div class="overlay is-open"></div>
+<div class="overlay"></div>
     <a class="terug-knop" href="/instrumenten">Terug naar het overzicht</a>
 
     <article class="instrument-article">
@@ -67,10 +67,82 @@
 					<li><time datetime="2026-03-20">20 maart 2026</time> — Uitgeleend</li>
 				</ul>
             </details>
-            <button class="button-primary btn-bewerken">Instrument info aanpassen</button>
+            <section class="actie-knoppen">
+                <button onclick="document.getElementById('uitlenen-dialog').showModal()" class="button-primary">Uitlenen</button>
+                <dialog id="uitlenen-dialog">
+                    <header class="popup-header">
+                        <h2>Wat wil je doen ?</h2>
+                        <button type="button" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>
+                    </header>
+                    <p>hierkomt het uitleen formulier</p>
+                    <button type="button" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>
+                    <button>Schade melden</button>
+                </dialog>
+                <button onclick="document.getElementById('schade-dialog').showModal()" class="button-secondary button-schade">Schade melden</button>
+                <dialog id="schade-dialog">
+                    <header class="popup-header">
+                        <h2>Schade melden</h2>
+                        <button type="button" onclick="document.getElementById('schade-dialog').close()">Annuleren</button>
+                    </header>
+                    <section class="">
+                        <form action="/schade" method="POST">
+                            <div>
+                                <p>Instrument</p>
+                                <p>{{ instrument.naam }} — {{ instrument.serial_number }}</p>
+                            </div>
 
-            {% render 'partials/beheer_acties.liquid', instrument: instruments %}
-            <button class="button-primary btn-actie">actie uitvoeren</button>
+                            <label>Aangetroffen door *
+                            <input type="text" name="" placeholder="Naam van de melder">
+                            </label>
+
+                            <label>Schade aangetroffen bij *
+                            <input type="text" name="" placeholder="bijv. naam leerling, docent of ruimte">
+                            </label>
+
+                            <input type="hidden" name="datum_melding" value="{{ 'now' | date: '%Y-%m-%d' }}">
+                            <input type="hidden" name="instrument_id" value="{{ instrument.id }}">
+                            <input type="hidden" name="instrument_naam" value="{{ instrument.naam }}">
+                            <input type="hidden" name="serienummer" value="{{ instrument.serial_number }}">
+
+                            <fieldset>
+                                <legend>Moet het instrument ter reparatie? *</legend>
+
+                                <label>
+                                    <input type="radio" name="reparatie" value="ja">
+                                    Ja
+                                </label>
+
+                                <label>
+                                    <input type="radio" name="reparatie" value="nee">
+                                    Nee
+                                </label>
+                            </fieldset>
+
+                            <label for="omschrijving">Omschrijving van de schade *
+                            <textarea name="omschrijving" placeholder="Beschrijf kort de schade en hoe deze is ontstaan..." required></textarea>
+                            </label>
+
+                            <fieldset>
+                                <legend>Foto van de schade</legend>
+
+                                <div class="upload-box">
+                                <label for="foto">
+                                    <span>+ Foto uploaden</span>
+                                    <span>JPG, PNG of WEBP</span>
+                                </label>
+
+                                <input type="file" name="photos" accept=".jpg,.png,.webp" multiple hidden>
+                                </div>
+                            </fieldset>
+
+                            <div class="knoppen-box">
+                                <button type="button" class="button-secondary annuleren">Annuleren</button>
+                                <button type="submit" class="button-primary">Melden</button>
+                            </div>
+                        </form>
+                    </section>
+                </dialog>
+            </section>
 
         </section>
         

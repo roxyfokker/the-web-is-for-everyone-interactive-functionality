@@ -396,6 +396,7 @@ form{
     }
   }
 }
+
 .form-melding{
   border: solid 0.2rem var(--color-status-borrowed-hex);
   background-color: var(--color-status-borrowed-bg);
@@ -410,6 +411,7 @@ form{
     }
   }
 }
+
 /*popup*/
 .popup{
     display: none;
@@ -425,22 +427,23 @@ form{
     z-index: 9999;
     max-height: 90vh;   
     overflow-y: auto;
-    .popup-header{
-        border-bottom: solid var(--color-primary) 0.1rem;
-        background-color: inherit;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        .popup-sluiten{
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            img{
-                height: 1.5rem;
-            }
-        }
+    
+}
+.popup-header{
+  border-bottom: solid var(--color-primary) 0.1rem;
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  .popup-sluiten{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    img{
+      height: 1.5rem;
     }
+  }
 }
 .popup.is-open{
     display: block;

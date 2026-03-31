@@ -89,7 +89,6 @@ app.get('/instrumenten/:key', async function (request, response) {
   });
 });
 
-
 app.post('/instrumenten', async function (request, response){
 
   const key = request.body.name                // "  Gitaar Akoestisch  "
