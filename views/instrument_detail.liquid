@@ -1,5 +1,6 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
+<div class="overlay is-open"></div>
     <a class="terug-knop" href="/instrumenten">Terug naar het overzicht</a>
 
     <article class="instrument-article">
@@ -67,6 +68,10 @@
 				</ul>
             </details>
             <button class="button-primary btn-bewerken">Instrument info aanpassen</button>
+
+            {% render 'partials/beheer_acties.liquid', instrument: instruments %}
+            <button class="button-primary btn-actie">actie uitvoeren</button>
+
         </section>
         
     </article>

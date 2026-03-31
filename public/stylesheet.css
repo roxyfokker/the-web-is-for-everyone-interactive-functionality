@@ -274,6 +274,16 @@ button{
     filter: brightness(0) invert(1);
   }
 }
+.button--uitleen{
+  &::before{
+    background-image: url('/icons/uitleen.svg');
+    margin-right: 0.5rem;
+    filter: brightness(0) invert(1);
+  }
+  &:hover::before{
+    filter: brightness(1) invert(0);
+  }
+}
 
 /*algemene styling form*/
 

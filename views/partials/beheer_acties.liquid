@@ -1,0 +1,19 @@
+<section class="beheer-actie-popup popup">
+    <header class="popup-header">
+        <h2>Wat wil je doen ?</h2>
+        <button class="popup-sluiten"><img src="/icons/close.svg" alt="">Sluiten</button>
+    </header>
+    <section class="mini-info">
+        <img src="{{ instrument.photo }}" alt="">
+        <p>
+            <span><strong>{{ instrument.name }}</strong></span>
+            <span>{{ instrument.serial_number }}</span>
+        </p>
+        <span class="status-label">{% render 'partials/status_label.liquid' %}</span>
+    </section>
+        <section class="actie-knoppen">
+            <button class="button-primary button--uitleen">Uitlenen</button>
+            <button class="button-secondary button-schade">Schade melden</button>
+            <button class="button-secondary button--detail">Bekijk details</button>
+    </section>
+</section>
