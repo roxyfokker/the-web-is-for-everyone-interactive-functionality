@@ -4,9 +4,13 @@
 <main class="instrument-overview-main">
     <h2>Overzicht van de instrumenten</h2>
     {% if successName %}
-        <img src="/icons/available.svg" alt="">
-        <p>Opslaan is gelukt !</p>
-        <p>{{ SuccessName }} is toegevoegd aan het overzicht </p>
+        <div class="melding">
+            <img src="/icons/available.svg" alt="">
+            <div>
+                <p>Opslaan is gelukt !</p>
+                <p>{{ SuccessName }} is toegevoegd aan het overzicht </p>
+            </div>
+        </div>
     {% endif %}
 
 
