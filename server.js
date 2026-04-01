@@ -72,7 +72,8 @@ app.get('/instrumenten', async function (request, response) {
     type: request.query.type || '',
     sort: request.query.sort || null,
     totalItems: totalItems,
-    pages: pages
+    pages: pages,
+    successName: request.query.name || null,
   });
 });
 
@@ -116,7 +117,7 @@ app.post('/instrumenten', async function (request, response){
     }
   });
 
-  response.redirect(303, '/instrumenten#' + key);
+  response.redirect(303, '/instrumenten?success=true&name=' + encodeURIComponent(request.body.name) + '&key=' + key + '#' + key);
 });
 
 /*

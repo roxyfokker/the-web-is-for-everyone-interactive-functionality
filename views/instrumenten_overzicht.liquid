@@ -3,6 +3,12 @@
 <div class="overlay"></div>
 <main class="instrument-overview-main">
     <h2>Overzicht van de instrumenten</h2>
+    {% if successName %}
+        <img src="/icons/available.svg" alt="">
+        <p>Opslaan is gelukt !</p>
+        <p>{{ SuccessName }} is toegevoegd aan het overzicht </p>
+    {% endif %}
+
 
     <section class="instrument-nav-panel">
         <form action="" class="zoekbalk" id="zoekbalk">
