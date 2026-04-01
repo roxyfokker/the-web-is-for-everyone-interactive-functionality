@@ -20,20 +20,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Feijoa";
-  src: url("/fonts/feijoa-regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Feijoa";
-  src: url("/fonts/feijoa-bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
 html, body {
   overflow-x: hidden;
   max-width: 100%;
@@ -105,9 +91,6 @@ a {
   /* typografie */
   /* Font families */
   --font-sans: "Akkurat", sans-serif;
-  --font-serif: "Feijoa", serif;
-
-
 
   /* Basis z-index niveaus */
   --z-index-background: 0;
@@ -147,8 +130,6 @@ a {
 
 }
 
-/* Thema kleuren */
-
 /*typografie*/
 
 /* Body */
@@ -161,7 +142,7 @@ body {
 
 /* Headings */
 h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--font-h1-size);
   font-weight: var(--font-h1-weight);
   line-height: var(--font-h1-line-height);
@@ -169,14 +150,14 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--font-h2-size);
   line-height: var(--font-h2-line-height);
   margin: var(--font-h2-margin);
 }
 
 h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--font-h3-size);
   line-height: var(--font-h3-line-height);
   margin: var(--font-h3-margin);
