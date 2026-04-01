@@ -18,6 +18,9 @@
 .no-scroll {
   overflow: hidden;
 }
+html:has(body.no-scroll) {
+    overflow: hidden;
+}
 .is-open{
     display: block;
 }
