@@ -27,3 +27,12 @@ overlay.addEventListener('click', () => {
 // scrollen na toevoegen new blokeren
 if (window.location.hash) {window.scrollTo(0, 0);}
 
+
+
+
+
+
+
+// voor mobiel testen
+const port = process.env.PORT || 8000;
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
