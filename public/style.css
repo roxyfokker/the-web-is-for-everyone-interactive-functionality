@@ -252,7 +252,7 @@ tr:target {
     background-color: var(--color-primary);
     color: var(--color-neutral-0);
 }
-.melding{
+.melding-success{
     padding: 1rem;
     padding-top: 2rem;
     border-radius: 0.375rem;
