@@ -133,11 +133,30 @@ app.post('/instrumenten/:id/uitlenen', async function (request, response){
       'Content-Type': 'application/json;charset=UTF-8'
     }
   }); 
-  
+
   const patchJSON = await patchResponse.json();
   console.log('patch result:', patchJSON);
 
   response.redirect(303, '/instrumenten/' + id + '?action=uitgeleend');
+});
+
+app.post('/instrumenten/:id/innemen', async function (request, response){
+  const id = request.params.id;
+
+  const patchResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + id, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status: 'Beschikbaar'
+    }),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  }); 
+  
+  const patchJSON = await patchResponse.json();
+  console.log('patch result:', patchJSON);
+
+  response.redirect(303, '/instrumenten/' + id + '?action=ingenomen');
 });
 
 /*

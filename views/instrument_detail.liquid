@@ -68,16 +68,30 @@
 				</ul>
             </details>
             <section class="actie-knoppen">
+                {% if status == 'Beschikbaar' %}
                 <button onclick="document.getElementById('uitlenen-dialog').showModal()" class="button-primary">Uitlenen</button>
-                <dialog id="uitlenen-dialog">
-                    <header class="popup-header">
-                        <h2> {{ instruments.name }} Uitlenen</h2>
-                        <button type="button" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>
-                    </header>
-                    <form action="/instrumenten/{{ instruments.id }}/uitlenen" method="POST">
-                        <button type="submit">Uitleen instrument</button>
-                    </form>
-                </dialog>
+                    <dialog id="uitlenen-dialog">
+                        <header class="popup-header">
+                            <h2> {{ instruments.name }} Uitlenen</h2>
+                            <button type="button" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>
+                        </header>
+                        <form action="/instrumenten/{{ instruments.id }}/uitlenen" method="POST">
+                            <button type="submit">Uitleen instrument</button>
+                        </form>
+                    </dialog>
+                {% else %}
+                    <button onclick="document.getElementById('innemen-dialog').showModal()" class="button-primary">innemen</button>
+                    <dialog id="innemen-dialog">
+                        <header class="popup-header">
+                            <h2> {{ instruments.name }} innemen</h2>
+                            <button type="button" onclick="document.getElementById('innemen-dialog').close()">Annuleren</button>
+                        </header>
+                        <form action="/instrumenten/{{ instruments.id }}/innemen" method="POST">
+                            <button type="submit">innemen instrument</button>
+                        </form>
+                    </dialog>
+
+                {% endif %}
                 <button onclick="document.getElementById('schade-dialog').showModal()" class="button-secondary button-schade">Schade melden</button>
                 <dialog id="schade-dialog">
                     <header class="popup-header">
