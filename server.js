@@ -77,8 +77,8 @@ app.get('/instrumenten', async function (request, response) {
   });
 });
 
-app.get('/instrumenten/:key', async function (request, response) {
-  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.key;
+app.get('/instrumenten/:id', async function (request, response) {
+  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.id;
 
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
@@ -86,7 +86,8 @@ app.get('/instrumenten/:key', async function (request, response) {
   response.render('instrument_detail.liquid', {
     instruments: instrumentsResponseJSON.data,
     type: request.query.type || '',
-    actie:request.query.action || null
+    actie:request.query.action || null,
+    status: request.query.status || null
   });
 });
 
@@ -118,6 +119,25 @@ app.post('/instrumenten', async function (request, response){
   });
 
   response.redirect(303, '/instrumenten?success=true&name=' + encodeURIComponent(request.body.name) + '&key=' + key + '#' + key);
+});
+
+app.post('/instrumenten/:id/uitlenen', async function (request, response){
+  const id = request.params.id;
+
+  const patchResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + id, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status: 'Uitgeleend'
+    }),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  }); 
+  
+  const patchJSON = await patchResponse.json();
+  console.log('patch result:', patchJSON);
+
+  response.redirect(303, '/instrumenten/' + id + '?action=uitgeleend');
 });
 
 /*

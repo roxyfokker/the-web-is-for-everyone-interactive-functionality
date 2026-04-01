@@ -1,7 +1,7 @@
 <span class="label
     {% if status == 'Beschikbaar' %}status-available
     {% elsif status == 'In reparatie' %}status-repair
-    {% elsif status == 'Verhuurd' or status == 'In gebruik voor school' %}status-borrowed
+    {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed
     {% else %}status-unknown
     {% endif %}
 ">
@@ -9,7 +9,7 @@
         Beschikbaar 
     {% elsif status == 'In reparatie' %}
         In Reparatie 
-    {% elsif status == 'Verhuurd' %}
+    {% elsif status == 'Uitgeleend' %}
         Uitgeleend 
     {% elsif status == 'In gebruik voor school' %}
         In Gebruik voor school
