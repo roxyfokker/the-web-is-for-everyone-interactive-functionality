@@ -288,6 +288,13 @@ tr:target {
     }
     .button-box{
         margin-right: auto;
+        select{
+            padding: 0.7rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
     }
     .view-toggle {
         margin-left: auto;
