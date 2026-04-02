@@ -337,6 +337,12 @@ tr:target {
         }
     }
 }
+.table-wrapper{
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
 .instrument-table{
     border-radius: 0.375em;
     border: 2px solid var(--color-primary); 
@@ -345,7 +351,6 @@ tr:target {
     box-shadow: 0 3px 6px var(--color-primary-border);
     margin: auto;
     width: 100%;
-    overflow: hidden;
     th, td {
         padding: 0.75rem 1rem;
         text-align: left;
@@ -401,13 +406,11 @@ tr:target {
     th:nth-child(3),
     th:nth-child(4),
     th:nth-child(5),
-    th:nth-child(7),
     th:nth-child(8),
     td:nth-child(2),
     td:nth-child(3),
     td:nth-child(4),
-    td:nth-child(5),
-    td:nth-child(7){
+    td:nth-child(5){
         display: none;
     }
 

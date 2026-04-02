@@ -52,76 +52,80 @@
 
         <p>{{ totalItems }} instrumenten gevonden</p>
 
-        <table class="instrument-table">
-            <thead>
-                <tr>
-                    <th scope="col">
-                        Naam instrument
-                        <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}" data-sort="{% if sort == 'name' %}asc{% elsif sort == '-name' %}desc{% endif %}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
-                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
-                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                    </th>
-                    <th scope="col">
-                        Serienummer
-                        <a href="?sort={% if sort == 'serial_number' %}-serial_number{% else %}serial_number{% endif %}" data-sort="{% if sort == 'serial_number' %}asc{% elsif sort == '-serial_number' %}desc{% endif %}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
-                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
-                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                    </th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Merk</th>
-                    <th scope="col">Eigendom van</th>
-                    <th scope="col">
-                        Status
-                        <a href="?sort={% if sort == 'status' %}-status{% else %}status{% endif %}" data-sort="{% if sort == 'status' %}asc{% elsif sort == '-status' %}desc{% endif %}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
-                                <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
-                                <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                    d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                    </th> 
-                    <th scope="col">Link</th> 
-                </tr>
-            </thead>
-            <tbody>
-                {% if instruments.size == 0 %}
-                    {% render 'partials/instrument_leeg.liquid', type: type %}
-                {% else %}
-                    {% for instrument in instruments %}
-                        <tr id="{{ instrument.key }}">
-                            <td  scope="row">{{ instrument.name }}</td>
-                            <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
-                            <td>{{ instrument.type | default: "Onbekend" }}</td>
-                            <td>{{ instrument.brand | default: "Onbekend" }}</td>
-                            <td>{{ instrument.property | default: "Onbekend" }}</td>
-                            <td>
-                                {% include 'partials/status_label.liquid', status: instrument.status %}
-                            </td>
-                            <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
-                            {% comment %}
-                            <td>
-                                <form action="/instrumenten/delete" method="POST">
-                                    <input type="hidden" name="id" value="{{ instrument.id }}">
-                                    <button type="submit">Verwijder</button>
-                                </form>
-                            </td>
-                            {% endcomment %}
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="instrument-table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Naam instrument
+                            <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}" data-sort="{% if sort == 'name' %}asc{% elsif sort == '-name' %}desc{% endif %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                    <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                    <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                                </svg>
+                            </a>
+                        </th>
+                        <th scope="col">
+                            Serienummer
+                            <a href="?sort={% if sort == 'serial_number' %}-serial_number{% else %}serial_number{% endif %}" data-sort="{% if sort == 'serial_number' %}asc{% elsif sort == '-serial_number' %}desc{% endif %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                    <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                    <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                                </svg>
+                            </a>
+                        </th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Merk</th>
+                        <th scope="col">Eigendom van</th>
+                        <th scope="col">
+                            Status
+                            <a href="?sort={% if sort == 'status' %}-status{% else %}status{% endif %}" data-sort="{% if sort == 'status' %}asc{% elsif sort == '-status' %}desc{% endif %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                                    <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                                    <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                        d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                                </svg>
+                            </a>
+                        </th> 
+                        <th scope="col">Link</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if instruments.size == 0 %}
+                        {% render 'partials/instrument_leeg.liquid', type: type %}
+                    {% else %}
+                        {% for instrument in instruments %}
+                            <tr id="{{ instrument.key }}">
+                                <td  scope="row">{{ instrument.name }}</td>
+                                <td>{{ instrument.serial_number | default: "Onbekend" }}</td>
+                                <td>{{ instrument.type | default: "Onbekend" }}</td>
+                                <td>{{ instrument.brand | default: "Onbekend" }}</td>
+                                <td>{{ instrument.property | default: "Onbekend" }}</td>
+                                <td>
+                                    {% include 'partials/status_label.liquid', status: instrument.status %}
+                                </td>
+                                <td><a class="table-link" href="/instrumenten/{{ instrument.id }}">detail</a></td>
+                                {% comment %}
+                                <td>
+                                    <form action="/instrumenten/delete" method="POST">
+                                        <input type="hidden" name="id" value="{{ instrument.id }}">
+                                        <button type="submit">Verwijder</button>
+                                    </form>
+                                </td>
+                                {% endcomment %}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        
 
 
 
