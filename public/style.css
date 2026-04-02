@@ -523,6 +523,7 @@ tr:target {
         color: var(--color-primary);
         border-bottom: 0.1rem solid var(--color-primary);
         margin-bottom: 1rem;
+        max-width: 90vw;
 
         h2{
             font-size: 2rem;
@@ -560,13 +561,15 @@ tr:target {
         }
     }
 }
-.instrument-info{   
+.instrument-info{ 
+      max-width: 90vw; 
     details{
         border: solid var(--color-primary) 0.1rem;
         background-color: var(--color-primary-bg);
         border-radius: 0.375em; 
         padding: 1rem;
         margin-bottom: 1rem;
+        max-width: 90vw;
 
         summary{
             font-size: 1.2rem;
