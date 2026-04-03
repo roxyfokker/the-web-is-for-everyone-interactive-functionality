@@ -20,28 +20,6 @@
   font-style: normal;
 }
 
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  max-width: 100%;
-}
-
-ul,
-ol {
-    list-style: none;
-}
-
-a {
-    color: inherit;
-}
-
 :root {
   /* Primary */
   --color-primary-hex: #46166b;
@@ -127,9 +105,36 @@ a {
   --font-p-weight: 300;
   --font-p-line-height: 1.6;
   --font-p-margin: 0 0 1em;
-
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary:#9b6cff;
+    --color-primary-hex: #9b6cff;
+    --color-primary-rgb: 155, 108, 255;
+  }
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
 /*typografie*/
 
 /* Body */
