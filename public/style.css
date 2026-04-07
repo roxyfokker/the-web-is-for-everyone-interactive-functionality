@@ -206,7 +206,7 @@ html:has(body.no-scroll) {
 tr:target {
     background-color: var(--color-status-available-border);
 }
-@supports (animation: fadeHighlight 8s ease forwards) {
+@supports (animation: fadeHighlight) {
     tr:target {
         background-color: transparent;
         animation: fadeHighlight 8s ease forwards;
