@@ -177,6 +177,15 @@ response.redirect(303, '/instrumenten/' + id + '?action=schadegemeld');
 
 ---
 
+## Progressive enhancement
+Ik heb gebruikgemaakt van progressive enhancement door eerst robuuste HTML en CSS te schrijven als basis. Ik heb er wel voor gekozen om CSS nesting te gebruiken, ook al is dat nog niet overal volledig ondersteund. Het is wel bijna zover, en het maakt mijn code een stuk overzichtelijker. Omdat dit project nog geen product is dat door echte gebruikers wordt gebruikt, vind ik het een goed moment om alvast vooruit te werken richting de toekomst waarin CSS nesting standaard is.
+
+Op een aantal plekken heb ik @supports gebruikt voor feature detection, zodat nieuwe CSS alleen wordt toegepast als de browser het ook echt ondersteunt. In dit stukje code gebruik ik bijvoorbeeld eerst een basisoplossing: het inputveld wordt rood met een rode rand als iemand iets invoert, maar dat is nog niet helemaal hoe het hoort. Als een browser wél :has() ondersteunt, krijgt ook het bijbehorende label een rode rand, waardoor de feedback duidelijker wordt.
+
+Er zijn nog een paar plekken waar ik CSS gebruik die nog niet volledig supported is. Daar heb ik een issue van gemaakt, maar ik ga dat nu niet oplossen omdat ik inmiddels betere HTML-elementen heb ontdekt die ervoor zorgen dat die CSS straks niet meer nodig is. Dat pak ik in de volgende sprint op. In die sprint wil ik ook verder gaan met andere vormen van progressive enhancement, zoals het toevoegen van animaties, transitions en extra interacties.
+
+---
+
 ## CSS-strategie & conventies
 
 CSS is geschreven met **CSS nesting** en wordt zo veel mogelijk **maximaal 3 lagen diep** genest. Daarnaast wordt de volgende eigenschapsvolgorde aangehouden, van buiten naar binnen naar visueel:
