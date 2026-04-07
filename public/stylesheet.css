@@ -1,4 +1,5 @@
 /**/
+/* @font-face = Baseline: WIDELY AVAILABLE*/
 @font-face {
   font-family: "Akkurat";
   src: url("/fonts/akkurat-light.ttf") format("truetype");
@@ -20,14 +21,15 @@
   font-style: normal;
 }
 
+/* :root = Baseline: WIDELY AVAILABLE*/
 :root {
   /* Primary */
-  --color-primary-hex: #46166b;
-  --color-primary-rgb: 70, 22, 107;
+  --color-primary-hex: #46166b; /* HEX kleurwaarde — Baseline: WIDELY AVAILABLE */
+  --color-primary-rgb: 70, 22, 107; /* rgb() kleurwaarde — Baseline: WIDELY AVAILABLE */
 
   --color-primary: rgb(var(--color-primary-rgb));
   --color-primary-bg: rgba(var(--color-primary-rgb), 0.1);
-  --color-primary-border: rgba(var(--color-primary-rgb), 0.5);
+  --color-primary-border: rgba(var(--color-primary-rgb), 0.5);  /* rgba() — Baseline: WIDELY AVAILABLE */
   --color-primary-text: var(--color-primary-hex);
 
   /* Neutrals */
@@ -82,7 +84,7 @@
   --font-body-line-height: 1.5;
 
   /* Headings */
-  --font-h1-size: clamp(2rem, 0.9830508475rem + 2.1186440678vw, 2.625rem);
+  --font-h1-size: clamp(2rem, 0.9830508475rem + 2.1186440678vw, 2.625rem); /* clamp() — Baseline: WIDELY AVAILABLE */
   --font-h1-weight: 400;
   --font-h1-line-height: 1.2;
   --font-h1-margin: 0 0 0.9375rem;
@@ -106,7 +108,7 @@
   --font-p-line-height: 1.6;
   --font-p-margin: 0 0 1em;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /*@media prefers-color-scheme - Baseline: WIDELY AVAILABLE*/
   :root {
     --color-primary:#9b6cff;
     --color-primary-hex: #9b6cff;
@@ -123,7 +125,7 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Baseline: WIDELY AVAILABLE */
   max-width: 100%;
 }
 
@@ -192,7 +194,7 @@ button{
   gap: 0.3em;
   font-size: 1rem;
   transition: 0.2s ease-out;
-  &::before {
+  &::before { /* ::before — Baseline: WIDELY AVAILABLE */
     content: "";
     width: 1em;
     height: 1em;
@@ -200,7 +202,7 @@ button{
     background-position: center;
     background-size: contain;
   }
-  &:hover{
+  &:hover{  /* :hover — Baseline: WIDELY AVAILABLE */
     cursor: pointer;
   }
 }
@@ -234,8 +236,8 @@ button{
 }
 .button--new{
   &::before{
-    background-image: url(/icons/plus.svg);
-    filter: brightness(0) invert(1);
+    background-image: url(/icons/plus.svg); /* background-image: url() — Baseline: WIDELY AVAILABLE */
+    filter: brightness(0) invert(1); /* filter: brightness() invert() — Baseline: WIDELY AVAILABLE */
   }
   &:hover::before{
     filter: brightness(0) invert(0);
@@ -295,14 +297,14 @@ form{
       color: var(--color-primary);
       border: solid var(--color-primary) 0.05rem;
       border-radius: 0.375rem;
-      &::placeholder{
+      &::placeholder{  /* ::placeholder — Baseline: WIDELY AVAILABLE */
         color: var(--color-neutral-500);
         font-size: 1rem;
       }
-      &:hover, &:focus{
+      &:hover, &:focus{ /*:focus — Baseline: WIDELY AVAILABLE*/
         outline: 0.09rem solid var(--color-primary);
       }
-      &:valid{
+      &:valid{ /* :valid — Baseline: WIDELY AVAILABLE */
         background-color: var(--color-primary-bg);
       }
       &:required:invalid:not(:placeholder-shown){
@@ -311,7 +313,7 @@ form{
       }
     }
   }
-  @supports(selector(:has(*))) {
+  @supports(selector(:has(*))) { /*  :has() is Baseline NEWLY AVAILABLE */
     label:has(input:required:invalid:not(:placeholder-shown)) {
       color: var(--color-status-borrowed-hex);
     }  
@@ -336,7 +338,7 @@ form{
     
     &:invalid {
       color: var(--color-neutral-500);
-      background-color: inherit;
+      background-color: inherit; /* inherit — Baseline: WIDELY AVAILABLE */
     }
     &:valid {
       background-color: var(--color-primary-bg);
@@ -417,7 +419,7 @@ form{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    max-height: 90vh;   
+    max-height: 90vh;    /* vh unit — Baseline: WIDELY AVAILABLE */
     overflow-y: auto;
     
 }
