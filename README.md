@@ -205,3 +205,12 @@ Commits volgen de volgende opbouw: type: beschrijving #issuenummer [wip]
 | `test` | Testen |
 | `chore` | Kleine technische aanpassingen |
 
+## Liquid partials  beslisboom
+gebruik onderstaande beslisboom om te bepalen waar je code thuishoort.
+
+Gebruik ik dit op meerdere plekken?
+├── Ja → partial in /components
+└── Nee → Is het groter dan ~50 regels of logisch zelfstandig?
+          ├── Ja → partial in /sections
+          └── Nee → gewoon inline laten
+
