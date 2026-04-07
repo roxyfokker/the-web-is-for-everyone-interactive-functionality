@@ -1,4 +1,4 @@
-# 🎵 Prelude Fonds — Instrumentenoverzicht
+# Prelude Fonds — Instrumentenoverzicht
 
 Een uitleentool voor het Prelude Fonds om grip te krijgen op de instrumentenvoorraad. Een centrale plek voor alle informatie over de instrumenten binnen COOL.
 
